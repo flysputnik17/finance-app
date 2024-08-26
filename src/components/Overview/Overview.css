@@ -1,0 +1,7 @@
+.overview {
+  width: 100%;
+  display: flex;
+}
+.overview__title {
+  color: black;
+}

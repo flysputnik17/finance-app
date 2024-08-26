@@ -1,0 +1,13 @@
+.sidebar {
+  grid-area: sidebar;
+}
+.main {
+  grid-area: main;
+}
+.page {
+  width: 100%;
+  height: max-content;
+  background-color: white;
+  display: grid;
+  grid-template-areas: "sidebar main";
+}
