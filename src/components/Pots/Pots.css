@@ -1,0 +1,7 @@
+.pots {
+  width: 100%;
+  display: flex;
+}
+.pots__title {
+  color: black;
+}

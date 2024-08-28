@@ -1,0 +1,7 @@
+.transactions {
+  width: 100%;
+  display: flex;
+}
+.transactions__title {
+  color: black;
+}

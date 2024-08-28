@@ -1,6 +1,10 @@
 import "./App.css";
 import Sidebar from "../Sidebar/Sidebar";
 import Overview from "../Overview/Overview";
+import Transactions from "../Transactions/Transactions";
+import Budgets from "../Budgets/Budgets";
+import Pots from "../Pots/Pots";
+import Bills from "../Bills/Bills";
 
 import { useState } from "react";
 
@@ -31,8 +35,6 @@ function App() {
   };
   const minimize = () => {
     console.log("minimize");
-    setCurrentRoute("transactions");
-    setCurrentRoute("minimize");
   };
 
   return (
@@ -49,7 +51,11 @@ function App() {
           />
         </div>
         <div className="main">
-          <Overview />
+          {currentRoute === "overview" ? <Overview /> : <></>}
+          {currentRoute === "transactions" ? <Transactions /> : <></>}
+          {currentRoute === "budgets" ? <Budgets /> : <></>}
+          {currentRoute === "pots" ? <Pots /> : <></>}
+          {currentRoute === "bills" ? <Bills /> : <></>}
         </div>
       </div>
     </CurrentPageContext.Provider>

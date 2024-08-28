@@ -1,0 +1,7 @@
+.budgets {
+  width: 100%;
+  display: flex;
+}
+.budgets__title {
+  color: black;
+}
