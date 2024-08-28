@@ -2,6 +2,7 @@
   background-color: rgb(32, 31, 36);
   max-width: 300px;
   border-top-right-radius: 5%;
+  border-bottom-right-radius: 5%;
 }
 .sidebar__continer {
   display: flex;
@@ -21,41 +22,63 @@
   margin: 40px 146px 40px 32px;
 }
 .sidebar__continer-butoms {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   width: 100%;
   height: 376px;
-  border-top: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
 }
-.sidebar__continer-buttons-button {
-  width: 90%;
+
+.sidebar__continer-buttons-text {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
   height: 56px;
+  width: 90%;
   border: none;
   background-color: transparent;
-  margin-bottom: 4px;
   color: rgb(179, 179, 179);
+  margin-bottom: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  opacity: 0.8;
 }
-.sidebar__continer-buttons-button:hover {
+.sidebar__continer-buttons-text-selected {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  height: 56px;
+  width: 90%;
+  border: none;
+  background-color: white;
+  color: black;
+  margin-bottom: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  opacity: 0.8;
+  border-top-right-radius: 20%;
+  border-bottom-right-radius: 20%;
+  border-left: 10px solid rgb(39, 124, 120);
+}
+.sidebar__continer-buttons-text-selected:hover {
+  cursor: pointer;
+}
+.sidebar__continer-butoms-icon {
+  height: fit-content;
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  margin: 16px 16px 16px 32px;
+}
+.sidebar__continer-buttons-text:hover {
   cursor: pointer;
   color: white;
+  opacity: 1;
 }
+
 .sidebar__continer-minimize {
   width: 100%;
   display: flex;
-  justify-content: center;
-  border-top: 1px solid white;
-  height: 100%;
-}
-.sidebar__continer-minimize-button {
-  width: 90%;
-  height: 56px;
-  border: none;
-  background-color: transparent;
-  color: rgb(179, 179, 179);
-  margin: 24px 0 482px 0;
-}
-.sidebar__continer-minimize-button:hover {
-  cursor: pointer;
-  color: white;
+  justify-content: start;
+  margin: 0 auto 482px 0;
 }
