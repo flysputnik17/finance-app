@@ -16,6 +16,11 @@ const potsIconBuutonSelected = "/src/assets/potsSelected.svg";
 const billsIconBuutonDefault = "/src/assets/icon-nav-recurring-bills.svg";
 const billsIconBuutonSelected = "/src/assets/billsSelected.svg";
 
+const minimizeButtonClicked = "animate__animated animate__bounceOutLeft";
+
+const seeDetailsButton = "/src/assets/seeDetailsButton.svg";
+const potsGreenIcon = "/src/assets/icon-pot.svg";
+
 export {
   buttonStyleUnclicked,
   buttonStyleClicked,
@@ -29,4 +34,7 @@ export {
   potsIconBuutonSelected,
   billsIconBuutonDefault,
   billsIconBuutonSelected,
+  minimizeButtonClicked,
+  seeDetailsButton,
+  potsGreenIcon,
 };

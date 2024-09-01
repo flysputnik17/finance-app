@@ -1,2 +1,6 @@
 @import url("../src/Vendor/normalize.css");
 @import url("../src/Vendor/fonts/fonts.css");
+:root {
+  width: 1440px;
+  background-color: blueviolet;
+}
