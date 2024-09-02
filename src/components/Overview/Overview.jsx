@@ -4,9 +4,11 @@ import data from "../../../data.json";
 
 import OverviewPots from "./OverviewPots/OverviewPots";
 import OverViewTransactions from "./OverviewTransactions/OverViewTransactions";
+import OverviewBills from "./OverviewBills/OverviewBills";
+import OverviewBudgets from "./OverviewBudgets/OverviewBudgets";
 const Overview = ({
   transactionsRender,
-  budgetsender,
+  budgetsRender,
   potsRender,
   billsRender,
 }) => {
@@ -32,8 +34,16 @@ const Overview = ({
           <p className="overview__info-rest-number">${expenses.toFixed(2)}</p>
         </div>
       </div>
-      <OverviewPots potsRender={potsRender} />
-      <OverViewTransactions transactionsRender={transactionsRender} />
+      <div className="overview__section">
+        <div className="overview__left-section">
+          <OverviewPots potsRender={potsRender} />
+          <OverViewTransactions transactionsRender={transactionsRender} />
+        </div>
+        <div className="overview__right-section">
+          <OverviewBudgets budgetsRender={budgetsRender} />
+          <OverviewBills billsRender={billsRender} />
+        </div>
+      </div>
     </div>
   );
 };

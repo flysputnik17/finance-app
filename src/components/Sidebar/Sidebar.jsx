@@ -16,25 +16,19 @@ import SidebarDefault from "./SidebarDefault/SidebarDefault";
 const Sidebar = ({
   overviewRender,
   transactionsRender,
-  budgetsender,
+  budgetsRender,
   potsRender,
   billsRender,
   minimize,
 }) => {
   const miniButton = useContext(minimizeButtonContext);
   return (
-    <section
-      className={
-        miniButton
-          ? "sidebar__minimized animate__animated animate__fadeInRight"
-          : "sidebar animate__animated animate__fadeInLeft"
-      }
-    >
+    <section className={miniButton ? "sidebar__minimized" : "sidebar"}>
       {miniButton ? (
         <SidebarMini
           overviewRender={overviewRender}
           transactionsRender={transactionsRender}
-          budgetsender={budgetsender}
+          budgetsender={budgetsRender}
           potsRender={potsRender}
           billsRender={billsRender}
           minimize={minimize}
@@ -43,7 +37,7 @@ const Sidebar = ({
         <SidebarDefault
           overviewRender={overviewRender}
           transactionsRender={transactionsRender}
-          budgetsender={budgetsender}
+          budgetsender={budgetsRender}
           potsRender={potsRender}
           billsRender={billsRender}
           minimize={minimize}

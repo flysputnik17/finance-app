@@ -24,7 +24,7 @@ function App() {
     console.log("transactionsRender button clicked");
     setCurrentRoute("transactions");
   };
-  const budgetsender = () => {
+  const budgetsRender = () => {
     console.log("budgetsender button clicked");
     setCurrentRoute("budgets");
   };
@@ -49,21 +49,20 @@ function App() {
     <minimizeButtonContext.Provider value={minimizeClicked}>
       <CurrentPageContext.Provider value={currentRoute}>
         <div className="page">
-          <div className="sidebar">
-            <Sidebar
-              overviewRender={overviewRender}
-              transactionsRender={transactionsRender}
-              budgetsender={budgetsender}
-              potsRender={potsRender}
-              billsRender={billsRender}
-              minimize={minimize}
-            />
-          </div>
+          <Sidebar
+            overviewRender={overviewRender}
+            transactionsRender={transactionsRender}
+            budgetsRender={budgetsRender}
+            potsRender={potsRender}
+            billsRender={billsRender}
+            minimize={minimize}
+          />
+
           <div className="main">
             {currentRoute === "overview" ? (
               <Overview
                 transactionsRender={transactionsRender}
-                budgetsender={budgetsender}
+                budgetsRender={budgetsRender}
                 potsRender={potsRender}
                 billsRender={billsRender}
               />

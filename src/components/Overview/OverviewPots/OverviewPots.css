@@ -5,6 +5,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   background-color: white;
+  border-radius: 20px;
+  margin: 0 24px 0 0;
 }
 .overview__pots-title {
   width: 43px;
@@ -29,6 +31,11 @@
   justify-content: center;
   opacity: 0.8;
   color: rgb(105, 104, 104);
+  font-family: "Text Preset4", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0px;
 }
 .overview__pots-button-img {
   width: 12px;
@@ -86,10 +93,11 @@
 }
 
 .overview__pots-info-second {
-  width: 277px;
-  height: 102px;
+  width: 100%;
+  height: auto;
   margin: 0 32px 36px 0;
 }
+
 .overview__pots-info-second-list {
   padding: 0;
   list-style: none;
@@ -97,16 +105,18 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin: 4px 0 4px 20px;
-  height: 102px;
+  height: auto;
 }
+
 .overview__pots-info-second-list-item {
   display: flex;
   flex-direction: column;
   margin: 0 16px 16px 0;
   padding: 0;
-  width: 130px;
-  height: 43px;
+  width: calc(50% - 16px);
+  height: auto;
   border-left: 5px solid rgb(39, 124, 120);
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 .overview__pots-info-second-list-item-title {
@@ -117,7 +127,9 @@
   font-size: 12px;
   line-height: 150%;
   letter-spacing: 0px;
+  white-space: nowrap;
 }
+
 .overview__pots-info-second-list-item-num {
   color: rgb(32, 31, 36);
   font-family: "Text Preset4 bold", Arial, Helvetica, sans-serif;

@@ -22,12 +22,15 @@
   flex-direction: row;
   margin: 0 40px 32px 0;
 }
+
 .overview__info-current {
   height: 100%;
   width: 100%;
   background-color: rgb(32, 31, 36);
   border-radius: 20px;
+  flex-grow: 1; /* Added */
 }
+
 .overview__info-current-title {
   color: white;
   font-family: "Text Preset4", Arial, Helvetica, sans-serif;
@@ -37,6 +40,7 @@
   letter-spacing: 0px;
   margin: 24px auto 12px 24px;
 }
+
 .overview__info-current-number {
   color: white;
   font-family: "Text Preset1", Arial, Helvetica, sans-serif;
@@ -52,7 +56,9 @@
   background-color: white;
   border-radius: 20px;
   margin: 0 0 0 24px;
+  flex-grow: 1; /* Added */
 }
+
 .overview__info-rest-title {
   font-family: "Text Preset4", Arial, Helvetica, sans-serif;
   font-weight: normal;
@@ -61,6 +67,7 @@
   letter-spacing: 0px;
   margin: 24px auto 12px 24px;
 }
+
 .overview__info-rest-number {
   font-family: "Text Preset1", Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -68,4 +75,23 @@
   letter-spacing: 0px;
   line-height: 120%;
   margin: 0 auto 24px 24px;
+}
+.overview__section {
+  display: flex;
+}
+.overview__left-section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.overview__right-section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  align-content: flex-start;
 }

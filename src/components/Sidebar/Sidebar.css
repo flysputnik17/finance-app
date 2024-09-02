@@ -1,14 +1,16 @@
 .sidebar {
   background-color: rgb(32, 31, 36);
-  max-width: 300px;
+  width: 300px;
   border-top-right-radius: 5%;
   border-bottom-right-radius: 5%;
+  transition: width 0.3s;
 }
 .sidebar__minimized {
   background-color: rgb(32, 31, 36);
-  max-width: 100px;
+  width: 100px;
   border-top-right-radius: 5%;
   border-bottom-right-radius: 5%;
+  transition: width 0.3s;
 }
 .sidebar__continer {
   display: flex;
