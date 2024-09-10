@@ -19,7 +19,11 @@ const OverviewBudgets = ({ budgetsRender }) => {
       </button>
       <div className="overview__budgets-main">
         <div className="overview__budgets-main-pie">
-          <img src="/src/assets/Chart.svg" alt="chart"></img>
+          <img
+            src="/src/assets/Chart.svg"
+            alt="chart"
+            className="overview__budgets-main-pie-img"
+          ></img>
         </div>
         <div className="overview__budgets-main-info">
           <ul className="overview__budgets-main-info-list">
