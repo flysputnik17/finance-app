@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import CurrentPageContext from "../../../contexts/CurrentPageContext";
+import smallScreenContext from "../../../contexts/SmallScreenContext";
 
 import {
   buttonStyleUnclicked,
@@ -27,12 +28,19 @@ const SidebarDefault = ({
   minimize,
 }) => {
   const currButton = useContext(CurrentPageContext);
+  const isMenuSmall = useContext(smallScreenContext);
+
   return (
     <>
       <div className="sidebar__continer">
-        <a className="sidebar__continer-logo" href="/">
-          finance
-        </a>
+        {isMenuSmall ? (
+          <></>
+        ) : (
+          <a className="sidebar__continer-logo" href="/">
+            finance
+          </a>
+        )}
+
         <div className="sidebar__continer-butoms">
           <button
             type="button"

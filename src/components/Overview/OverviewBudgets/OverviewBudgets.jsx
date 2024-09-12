@@ -4,7 +4,7 @@ import { seeDetailsButton } from "../../../Utils/constants";
 const OverviewBudgets = ({ budgetsRender }) => {
   return (
     <div className="overview__budgets">
-      <h2 className="overview__budgets-title">Budgets</h2>
+      <h2 className="overview__pots-title">Budgets</h2>
       <button
         className="overview__pots-button"
         type="button"

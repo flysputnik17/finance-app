@@ -17,6 +17,7 @@
   line-height: 120%;
   letter-spacing: 0px;
   margin: 32px auto 32px 32px;
+  white-space: nowrap;
 }
 .overview__trans-continer {
   height: 100%;
@@ -38,6 +39,10 @@
   margin: 0 0 20px 0;
   padding-bottom: 20px;
   border-bottom: 1px solid rgb(242, 242, 242);
+}
+.overview__trans-continer-list-item:last-child {
+  margin-bottom: 0;
+  border-bottom: 0px;
 }
 .overview__trans-continer-list-item-icon {
   width: 40px;
@@ -74,6 +79,7 @@
   line-height: 150%;
   letter-spacing: 0px;
   color: rgb(39, 124, 120);
+  text-align: end;
 }
 .overview__trans-continer-list-item-info-date {
   width: 70px;
@@ -86,4 +92,13 @@
   letter-spacing: 0px;
   color: rgb(105, 104, 104);
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .overview__trans {
+    width: 100%;
+  }
+  .overview__trans-continer {
+    width: 100%;
+  }
 }

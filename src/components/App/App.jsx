@@ -7,15 +7,22 @@ import Budgets from "../Budgets/Budgets";
 import Pots from "../Pots/Pots";
 import Bills from "../Bills/Bills";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import CurrentPageContext from "../../contexts/CurrentPageContext";
 import minimizeButtonContext from "../../contexts/MinimizeButtonContext";
+import smallScreenContext from "../../contexts/SmallScreenContext";
 
 function App() {
   const [currentRoute, setCurrentRoute] = useState("overview");
   const [minimizeClicked, setMinimizeClicked] = useState(false);
+  const [isMenuSmall, setIsMenuSmall] = useState(false);
 
+  useEffect(() => {
+    handleResize(); // Call handleResize initially to set the correct state
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const overviewRender = () => {
     console.log("overviewRender button clicked");
     setCurrentRoute("overview");
@@ -45,18 +52,28 @@ function App() {
     }
   };
 
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      setIsMenuSmall(true);
+    } else {
+      setIsMenuSmall(false);
+    }
+  };
+
   return (
     <minimizeButtonContext.Provider value={minimizeClicked}>
       <CurrentPageContext.Provider value={currentRoute}>
         <div className="page">
-          <Sidebar
-            overviewRender={overviewRender}
-            transactionsRender={transactionsRender}
-            budgetsRender={budgetsRender}
-            potsRender={potsRender}
-            billsRender={billsRender}
-            minimize={minimize}
-          />
+          <smallScreenContext.Provider value={isMenuSmall}>
+            <Sidebar
+              overviewRender={overviewRender}
+              transactionsRender={transactionsRender}
+              budgetsRender={budgetsRender}
+              potsRender={potsRender}
+              billsRender={billsRender}
+              minimize={minimize}
+            />
+          </smallScreenContext.Provider>
 
           <div className="main">
             {currentRoute === "overview" ? (
