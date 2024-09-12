@@ -88,12 +88,8 @@
 }
 
 @media (max-width: 768px) {
-  .overview__budgets {
-    width: 100%;
-  }
   .overview__budgets-main {
     height: fit-content;
-    margin: 0 32px 32px 32px;
   }
   .overview__budgets-main-pie {
     width: 100%;

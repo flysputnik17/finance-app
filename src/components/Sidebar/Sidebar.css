@@ -86,8 +86,8 @@
   margin: 0 auto 482px 0;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .sidebar__continer {
     flex-direction: row;
   }
-} */
+}
