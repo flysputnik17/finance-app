@@ -16,7 +16,7 @@ const OverViewTransactions = ({ transactionsRender }) => {
     return `${day} ${month} ${year}`;
   };
   return (
-    <div className="overview__trans">
+    <div className="overview__trans animate__animated animate__fadeInUpBig animate__delay-0.12s">
       <h2 className="overview__trans-title">Transactions</h2>
       <button
         className="overview__pots-button"

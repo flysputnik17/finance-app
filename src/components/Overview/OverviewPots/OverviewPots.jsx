@@ -3,7 +3,7 @@ import { seeDetailsButton, potsGreenIcon } from "../../../Utils/constants";
 import "./OverviewPots.css";
 const OverviewPots = ({ potsRender }) => {
   return (
-    <div className="overview__pots">
+    <div className="overview__pots animate__animated animate__zoomIn animate__delay-0.3s">
       <h2 className="overview__pots-title">Pots</h2>
       <button
         className="overview__pots-button"

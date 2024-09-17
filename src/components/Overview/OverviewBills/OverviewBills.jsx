@@ -3,7 +3,7 @@ import { seeDetailsButton } from "../../../Utils/constants";
 
 const OverviewBills = ({ billsRender }) => {
   return (
-    <div className="overview__bils">
+    <div className="overview__bils animate__animated animate__fadeInBottomRight animate__delay-0.10s">
       <h2 className="overview__trans-title">Recurring Bills</h2>
       <button
         className="overview__pots-button"

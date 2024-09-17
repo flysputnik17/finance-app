@@ -148,24 +148,28 @@ const SidebarDefault = ({
             Recurring Bills
           </button>
         </div>
-        <div className="sidebar__continer-minimize">
-          <button
-            type="button"
-            className={
-              currButton === "minimize"
-                ? minimizeButtonClicked
-                : buttonStyleUnclicked
-            }
-            onClick={minimize}
-          >
-            <img
-              src="/src/assets/icon-minimize-menu.svg"
-              alt=""
-              className="sidebar__continer-butoms-icon"
-            />
-            Minimize Menu
-          </button>
-        </div>
+        {isMenuSmall ? (
+          <></>
+        ) : (
+          <div className="sidebar__continer-minimize">
+            <button
+              type="button"
+              className={
+                currButton === "minimize"
+                  ? minimizeButtonClicked
+                  : buttonStyleUnclicked
+              }
+              onClick={minimize}
+            >
+              <img
+                src="/src/assets/icon-minimize-menu.svg"
+                alt=""
+                className="sidebar__continer-butoms-icon"
+              />
+              Minimize Menu
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

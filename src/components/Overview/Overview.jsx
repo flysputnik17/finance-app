@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import "./Overview.css";
 
 import data from "../../../data.json";
@@ -6,6 +7,7 @@ import OverviewPots from "./OverviewPots/OverviewPots";
 import OverViewTransactions from "./OverviewTransactions/OverViewTransactions";
 import OverviewBills from "./OverviewBills/OverviewBills";
 import OverviewBudgets from "./OverviewBudgets/OverviewBudgets";
+
 const Overview = ({
   transactionsRender,
   budgetsRender,
@@ -16,9 +18,11 @@ const Overview = ({
   const income = data.balance.income;
   const expenses = data.balance.expenses;
   return (
-    <div className="overview">
-      <h1 className="overview__title">Overview</h1>
-      <div className="overview__info">
+    <div className="overview ">
+      <h1 className="overview__title animate__animated animate__fadeIn animate__slow">
+        Overview
+      </h1>
+      <div className="overview__info animate__animated animate__flipInX animate__slow">
         <div className="overview__info-current">
           <p className="overview__info-current-title">Current Balance</p>
           <p className="overview__info-current-number">
