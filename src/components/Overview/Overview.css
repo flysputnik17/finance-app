@@ -105,3 +105,37 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 465px) {
+  .overview {
+    max-width: 465px;
+  }
+  .overview__title {
+    margin: 0 0 32px 0;
+    height: 38px;
+  }
+  .overview__info {
+    flex-direction: column;
+    width: auto;
+    height: 357px;
+    margin: 0 0 32px 0;
+  }
+  .overview__info-current {
+    margin: 0 0 12px 0;
+  }
+  .overview__info-rest {
+    margin: 0 0 12px 0;
+  }
+  .overview__info-rest:last-child {
+    margin: 0;
+  }
+  .overview__info-current-title {
+    margin: 20px auto 12px 20px;
+  }
+  .overview__info-current-number {
+    margin: 0 auto 20px 20px;
+  }
+  .overview__section {
+    flex-direction: column;
+  }
+}

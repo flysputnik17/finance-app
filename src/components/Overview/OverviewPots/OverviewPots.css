@@ -149,3 +149,33 @@
     width: auto;
   }
 }
+@media (max-width: 465px) {
+  .overview__pots {
+    width: 100%;
+    height: 324px;
+    margin-bottom: 16px;
+    align-content: flex-start;
+  }
+  .overview__pots-title {
+    margin: 24px auto 20px 20px;
+  }
+  .overview__pots-button {
+    margin: 25.5px 20px 21.5px auto;
+  }
+  .overview__pots-info {
+    flex-direction: column;
+    width: 100%;
+    height: 232px;
+    margin: 0 20px 24px 20px;
+  }
+  .overview__pots-info-main {
+    margin: 0 0 20px 0;
+  }
+  .overview__pots-info-second {
+    margin: 0;
+    height: 102px;
+  }
+  .overview__pots-info-second-list {
+    margin: 0;
+  }
+}

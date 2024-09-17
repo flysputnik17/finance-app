@@ -52,7 +52,6 @@
     max-width: 768px;
     height: 100%;
     margin: 32px 40px 32px 40px;
-    background-color: rgb(248, 244, 240);
   }
   .sidebar {
     width: 100%;
@@ -60,5 +59,21 @@
     border-top-right-radius: 5%;
     border-top-left-radius: 5%;
     border-bottom-right-radius: 0%;
+  }
+}
+
+@media (max-width: 465px) {
+  .page {
+    max-width: 465px;
+    gap: 24px;
+  }
+  .main {
+    max-width: 465px;
+    height: 100%;
+    margin: 24px 16px 24px 16px;
+  }
+  .sidebar {
+    max-width: 465px;
+    height: 52px;
   }
 }
