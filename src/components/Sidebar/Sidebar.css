@@ -139,3 +139,13 @@
     margin: 8px 40px 4px 40px;
   }
 }
+
+@media (max-width: 465px) {
+  .sidebar__continer-butoms {
+    margin: 8px 16px 0 16px;
+  }
+  .sidebar__continer-buttons-text {
+    width: 68.6px;
+    height: 44px;
+  }
+}

@@ -102,3 +102,16 @@
     width: 100%;
   }
 }
+
+@media (max-width: 465px) {
+  .overview__trans {
+    margin: 0 0 24px 0;
+    max-height: 503px;
+  }
+  .overview__trans-title {
+    margin: 24px auto 32px 20px;
+  }
+  .overview__trans-continer {
+    margin: 0 20px 24px 20px;
+  }
+}

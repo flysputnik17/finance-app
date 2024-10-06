@@ -99,3 +99,32 @@
     margin: 0 133px 0 133px;
   }
 }
+
+@media (max-width: 465px) {
+  .overview__budgets {
+    height: 466px;
+    margin: 0 0 16px 0;
+    width: 100%;
+  }
+  .overview__budgets-main {
+    height: 374px;
+    flex-direction: column;
+    margin: 0 20px 24px 20px;
+  }
+  .overview__budgets-main-pie {
+    margin: 0 0 16px 0;
+    display: flex;
+    justify-content: center;
+  }
+  .overview__budgets-main-pie-img {
+    margin: 0 31.5px 0 31.5px;
+  }
+
+  .overview__budgets-main-info {
+    margin: 0;
+  }
+  .overview__budgets-main-info-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

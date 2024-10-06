@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import CurrentPageContext from "../../../contexts/CurrentPageContext";
 import smallScreenContext from "../../../contexts/SmallScreenContext";
+import mobileScreenContext from "../../../contexts/MobileScreenContext";
 
 import {
   buttonStyleUnclicked,
@@ -29,6 +30,7 @@ const SidebarDefault = ({
 }) => {
   const currButton = useContext(CurrentPageContext);
   const isMenuSmall = useContext(smallScreenContext);
+  const isMobile = useContext(mobileScreenContext);
 
   return (
     <>
@@ -61,7 +63,7 @@ const SidebarDefault = ({
               alt="overview"
               className="sidebar__continer-butoms-icon"
             ></img>
-            Overview
+            {isMobile ? "" : "Overview"}
           </button>
 
           <button
@@ -83,7 +85,7 @@ const SidebarDefault = ({
               alt="overview"
               className="sidebar__continer-butoms-icon"
             ></img>
-            Transactions
+            {isMobile ? "" : "Transactions"}
           </button>
 
           <button
@@ -105,7 +107,7 @@ const SidebarDefault = ({
               alt="overview"
               className="sidebar__continer-butoms-icon"
             ></img>
-            Budgets
+            {isMobile ? "" : "Budgets"}
           </button>
 
           <button
@@ -125,7 +127,7 @@ const SidebarDefault = ({
               alt="overview"
               className="sidebar__continer-butoms-icon"
             ></img>
-            Pots
+            {isMobile ? "" : "Pots"}
           </button>
 
           <button
@@ -145,7 +147,7 @@ const SidebarDefault = ({
               alt="overview"
               className="sidebar__continer-butoms-icon"
             ></img>
-            Recurring Bills
+            {isMobile ? "" : "Recurring Bills"}
           </button>
         </div>
         {isMenuSmall ? (
