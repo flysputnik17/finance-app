@@ -141,11 +141,24 @@
 }
 
 @media (max-width: 465px) {
+  .sidebar__continer {
+    height: 52px;
+    align-items: flex-end;
+  }
   .sidebar__continer-butoms {
     margin: 8px 16px 0 16px;
+    height: 44px;
+    justify-content: space-between;
+    align-items: flex-end;
   }
   .sidebar__continer-buttons-text {
     width: 68.6px;
     height: 44px;
+    margin: 0;
+  }
+  .sidebar__continer-buttons-text-selected {
+    width: 68.6px;
+    height: 44px;
+    margin: 0;
   }
 }

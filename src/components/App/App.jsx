@@ -83,25 +83,25 @@ function App() {
                 billsRender={billsRender}
                 minimize={minimize}
               />
+
+              <div className="main">
+                {currentRoute === "overview" ? (
+                  <Overview
+                    transactionsRender={transactionsRender}
+                    budgetsRender={budgetsRender}
+                    potsRender={potsRender}
+                    billsRender={billsRender}
+                  />
+                ) : (
+                  <></>
+                )}
+                {currentRoute === "transactions" ? <Transactions /> : <></>}
+                {currentRoute === "budgets" ? <Budgets /> : <></>}
+                {currentRoute === "pots" ? <Pots /> : <></>}
+                {currentRoute === "bills" ? <Bills /> : <></>}
+              </div>
             </mobileScreenContext.Provider>
           </smallScreenContext.Provider>
-
-          <div className="main">
-            {currentRoute === "overview" ? (
-              <Overview
-                transactionsRender={transactionsRender}
-                budgetsRender={budgetsRender}
-                potsRender={potsRender}
-                billsRender={billsRender}
-              />
-            ) : (
-              <></>
-            )}
-            {currentRoute === "transactions" ? <Transactions /> : <></>}
-            {currentRoute === "budgets" ? <Budgets /> : <></>}
-            {currentRoute === "pots" ? <Pots /> : <></>}
-            {currentRoute === "bills" ? <Bills /> : <></>}
-          </div>
         </div>
       </CurrentPageContext.Provider>
     </minimizeButtonContext.Provider>

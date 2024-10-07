@@ -21,6 +21,8 @@ const minimizeButtonClicked = "animate__animated animate__bounceOutLeft";
 const seeDetailsButton = "/src/assets/seeDetailsButton.svg";
 const potsGreenIcon = "/src/assets/icon-pot.svg";
 
+const searchIcon = "/src/assets/searchIcon.svg";
+
 export {
   buttonStyleUnclicked,
   buttonStyleClicked,
@@ -37,4 +39,5 @@ export {
   minimizeButtonClicked,
   seeDetailsButton,
   potsGreenIcon,
+  searchIcon,
 };
