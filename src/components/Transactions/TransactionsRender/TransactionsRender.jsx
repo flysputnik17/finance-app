@@ -1,9 +1,12 @@
-import "./OverViewTransactions.css";
+import { useContext } from "react";
+import "./TransactionRender.css";
 import { seeDetailsButton } from "../../../Utils/constants";
 import data from "../../../../data.json";
+import CurrentPageContext from "../../../contexts/CurrentPageContext";
 
-const OverViewTransactions = ({ transactionsRender }) => {
-  const count = 5;
+const TransactionsRender = ({ transactionsRender }) => {
+  const currPage = useContext(CurrentPageContext);
+  const count = currPage === "overview" ? 5 : 10;
   const handleDateConversion = (date) => {
     const options = {
       day: "numeric",
@@ -17,19 +20,35 @@ const OverViewTransactions = ({ transactionsRender }) => {
   };
   return (
     <div className="overview__trans animate__animated animate__fadeInUpBig animate__delay-0.12s">
-      <h2 className="overview__trans-title">Transactions</h2>
-      <button
-        className="overview__pots-button"
-        type="button"
-        onClick={transactionsRender}
-      >
-        View All
-        <img
-          className="overview__pots-button-img"
-          src={seeDetailsButton}
-          alt="see details"
-        ></img>
-      </button>
+      {currPage === "overview" ? (
+        <>
+          <h2 className="overview__trans-title">Transactions</h2>
+          <button
+            className="overview__pots-button"
+            type="button"
+            onClick={transactionsRender}
+          >
+            View All
+            <img
+              className="overview__pots-button-img"
+              src={seeDetailsButton}
+              alt="see details"
+            ></img>
+          </button>
+        </>
+      ) : (
+        <>
+          <div className="transactions__titles">
+            <p className="transactions__titles-text-small">
+              Recipient / Sender
+            </p>
+            <p className="transactions__titles-text-small">Category</p>
+            <p className="transactions__titles-text-small">Transaction Date</p>
+            <p className="transactions__titles-text-small">Amount</p>
+          </div>
+        </>
+      )}
+
       <div className="overview__trans-continer">
         <ul className="overview__trans-continer-list">
           {data.transactions.slice(0, count).map((item, index) => (
@@ -58,4 +77,4 @@ const OverViewTransactions = ({ transactionsRender }) => {
   );
 };
 
-export default OverViewTransactions;
+export default TransactionsRender;

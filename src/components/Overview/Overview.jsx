@@ -4,7 +4,8 @@ import "./Overview.css";
 import data from "../../../data.json";
 
 import OverviewPots from "./OverviewPots/OverviewPots";
-import OverViewTransactions from "./OverviewTransactions/OverViewTransactions";
+// import OverViewTransactions from "./OverviewTransactions/OverViewTransactions";
+import TransactionsRender from "../Transactions/TransactionsRender/TransactionsRender";
 import OverviewBills from "./OverviewBills/OverviewBills";
 import OverviewBudgets from "./OverviewBudgets/OverviewBudgets";
 
@@ -41,7 +42,7 @@ const Overview = ({
       <div className="overview__section">
         <div className="overview__left-section">
           <OverviewPots potsRender={potsRender} />
-          <OverViewTransactions transactionsRender={transactionsRender} />
+          <TransactionsRender transactionsRender={transactionsRender} />
         </div>
         <div className="overview__right-section">
           <OverviewBudgets budgetsRender={budgetsRender} />

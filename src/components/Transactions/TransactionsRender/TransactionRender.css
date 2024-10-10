@@ -19,6 +19,17 @@
   margin: 32px auto 32px 32px;
   white-space: nowrap;
 }
+.transactions__titles {
+  display: flex;
+  flex-direction: row;
+  font-family: "Text Preset5", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  justify-content: space-between;
+  width: 100%;
+}
 .overview__trans-continer {
   height: 100%;
   width: 544px;

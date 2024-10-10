@@ -1,5 +1,6 @@
 import "./Transactions.css";
 import { searchIcon } from "../../Utils/constants";
+import TransactionsRender from "./TransactionsRender/TransactionsRender";
 
 const Transactions = () => {
   return (
@@ -25,33 +26,38 @@ const Transactions = () => {
               className="transactions__info-filters-input-icon"
             ></img>
           </label>
-          <label className="transactions__info-filters-label-select">
-            Sort by
-            <select className="transactions__info-filters-select">
-              <option value="Latest">Latest</option>
-              <option value="Oldest">Oldest</option>
-              <option value="A to Z">A to Z</option>
-              <option value="Z to A">Z to A</option>
-              <option value="Highest">Highest</option>
-              <option value="Lowest">Lowest</option>
-            </select>
-          </label>
-          <label className="transactions__info-filters-label-select">
-            Category
-            <select className="transactions__info-filters-select">
-              <option value="All Transaction">All Transaction</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Bills">Bills</option>
-              <option value="Groceries">Groceries</option>
-              <option value="Dining Out">Dining Out</option>
-              <option value="Transportation">Transportation</option>
-              <option value="Personal Care">Personal Care</option>
-              <option value="Education">Education</option>
-              <option value="Lifestyle">Lifestyle</option>
-              <option value="Shopping">Shopping</option>
-              <option value="General">General</option>
-            </select>
-          </label>
+          <div className="transactions__info-filters-label-rest">
+            <label className="transactions__info-filters-label-select">
+              Sort by
+              <select className="transactions__info-filters-select">
+                <option value="Latest">Latest</option>
+                <option value="Oldest">Oldest</option>
+                <option value="A to Z">A to Z</option>
+                <option value="Z to A">Z to A</option>
+                <option value="Highest">Highest</option>
+                <option value="Lowest">Lowest</option>
+              </select>
+            </label>
+            <label className="transactions__info-filters-label-select">
+              Category
+              <select className="transactions__info-filters-select">
+                <option value="All Transaction">All Transaction</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Bills">Bills</option>
+                <option value="Groceries">Groceries</option>
+                <option value="Dining Out">Dining Out</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Personal Care">Personal Care</option>
+                <option value="Education">Education</option>
+                <option value="Lifestyle">Lifestyle</option>
+                <option value="Shopping">Shopping</option>
+                <option value="General">General</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div className="transactions__info-main">
+          <TransactionsRender />
         </div>
       </div>
     </div>
