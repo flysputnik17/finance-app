@@ -23,6 +23,11 @@ const potsGreenIcon = "/src/assets/icon-pot.svg";
 
 const searchIcon = "/src/assets/searchIcon.svg";
 
+const previmg = "/src/assets/previmg.svg";
+const previmgHover = "/src/assets/previmgHover.svg";
+const nextimg = "/src/assets/nextimg.svg";
+const nextimgHover = "/src/assets/nextimgHover.svg";
+
 export {
   buttonStyleUnclicked,
   buttonStyleClicked,
@@ -40,4 +45,8 @@ export {
   seeDetailsButton,
   potsGreenIcon,
   searchIcon,
+  previmg,
+  nextimg,
+  previmgHover,
+  nextimgHover,
 };
