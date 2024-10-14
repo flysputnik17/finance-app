@@ -1,11 +1,6 @@
 import "./Transactions.css";
-import {
-  searchIcon,
-  previmg,
-  nextimg,
-  previmgHover,
-  nextimgHover,
-} from "../../Utils/constants";
+import { searchIcon } from "../../Utils/constants";
+
 import TransactionsRender from "./TransactionsRender/TransactionsRender";
 
 const Transactions = () => {
@@ -64,41 +59,6 @@ const Transactions = () => {
         </div>
         <div className="transactions__info-main">
           <TransactionsRender />
-        </div>
-        <div className="transactions__info-pages">
-          <button className="transactions__info-pages-button">
-            <img
-              className="transactions__info-pages-button-img"
-              src={previmg}
-              alt="prev"
-            ></img>
-            Prev
-          </button>
-          <div className="transactions__info-pages-buttons">
-            <button className="transactions__info-pages-buttons-single">
-              1
-            </button>
-            <button className="transactions__info-pages-buttons-single">
-              2
-            </button>
-            <button className="transactions__info-pages-buttons-single">
-              3
-            </button>
-            <button className="transactions__info-pages-buttons-single">
-              4
-            </button>
-            <button className="transactions__info-pages-buttons-single">
-              5
-            </button>
-          </div>
-          <button className="transactions__info-pages-button-next">
-            Next
-            <img
-              className="transactions__info-pages-button-img"
-              src={nextimg}
-              alt="next"
-            ></img>
-          </button>
         </div>
       </div>
     </div>

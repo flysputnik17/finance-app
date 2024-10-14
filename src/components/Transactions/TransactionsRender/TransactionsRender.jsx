@@ -1,12 +1,46 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./TransactionRender.css";
-import { seeDetailsButton } from "../../../Utils/constants";
+import {
+  seeDetailsButton,
+  searchIcon,
+  previmg,
+  nextimg,
+  previmgHover,
+  nextimgHover,
+} from "../../../Utils/constants";
 import data from "../../../../data.json";
 import CurrentPageContext from "../../../contexts/CurrentPageContext";
 
 const TransactionsRender = ({ transactionsRender }) => {
+  const [visibleCount, setVisibleCount] = useState(10);
+  let dataTransactionsLength = data.transactions.length;
   const currPage = useContext(CurrentPageContext);
-  const count = currPage === "overview" ? 5 : 10;
+
+  const pageButtonsRender = () => {
+    const buttons = [];
+    for (let i = 1; i <= dataTransactionsLength / 10; i++) {
+      buttons.push(
+        <button key={i} className="transactions__info-pages-buttons-single">
+          {i}
+        </button>
+      );
+    }
+    return buttons;
+  };
+
+  const nextTranPage = () => {
+    setVisibleCount((prevCount) => prevCount + 10);
+    renderTransactionItem();
+  };
+
+  const nextTransactionsRender = () => {
+    console.log("next");
+    nextTranPage();
+  };
+
+  const prevTransactionsRender = () => {
+    console.log("prev");
+  };
 
   const handleDateConversion = (date) => {
     const options = { day: "numeric", month: "short", year: "numeric" };
@@ -95,9 +129,58 @@ const TransactionsRender = ({ transactionsRender }) => {
         : renderTransactionsHeader()}
       <div className="overview__trans-continer">
         <ul className="overview__trans-continer-list">
-          {data.transactions.slice(0, count).map(renderTransactionItem)}
+          {currPage === "overview"
+            ? data.transactions
+                .slice(0, 5)
+                .map((item, index) => renderTransactionItem(item, index))
+            : data.transactions
+                .slice(0, visibleCount)
+                .map((item, index) => renderTransactionItem(item, index))}
         </ul>
       </div>
+      {dataTransactionsLength > 10 && currPage !== "overview" ? (
+        <div className="transactions__info-pages">
+          <button
+            className="transactions__info-pages-button"
+            onMouseEnter={(e) => {
+              e.currentTarget.querySelector("img").src = previmgHover;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.querySelector("img").src = previmg;
+            }}
+            onClick={prevTransactionsRender}
+          >
+            <img
+              className="transactions__info-pages-button-img"
+              src={previmg}
+              alt="prev"
+            ></img>
+            Prev
+          </button>
+          <div className="transactions__info-pages-buttons">
+            {pageButtonsRender({ data })}
+          </div>
+          <button
+            className="transactions__info-pages-button-next"
+            onMouseEnter={(e) =>
+              (e.currentTarget.querySelector("img").src = nextimgHover)
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.querySelector("img").src = nextimg)
+            }
+            onClick={nextTransactionsRender}
+          >
+            Next
+            <img
+              className="transactions__info-pages-button-img"
+              src={nextimg}
+              alt="next"
+            ></img>
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
