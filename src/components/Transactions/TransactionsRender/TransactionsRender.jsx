@@ -13,14 +13,23 @@ import CurrentPageContext from "../../../contexts/CurrentPageContext";
 
 const TransactionsRender = ({ transactionsRender }) => {
   const [visibleCount, setVisibleCount] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
   let dataTransactionsLength = data.transactions.length;
   const currPage = useContext(CurrentPageContext);
 
   const pageButtonsRender = () => {
     const buttons = [];
-    for (let i = 1; i <= dataTransactionsLength / 10; i++) {
+    for (let i = 1; i <= Math.ceil(dataTransactionsLength / 10); i++) {
       buttons.push(
-        <button key={i} className="transactions__info-pages-buttons-single">
+        <button
+          key={i}
+          className={`transactions__info-pages-buttons-single ${
+            i === currentPage
+              ? "transactions__info-pages-buttons-single-selected"
+              : ""
+          }`}
+          onClick={() => handlePageChange(i)}
+        >
           {i}
         </button>
       );
@@ -28,18 +37,21 @@ const TransactionsRender = ({ transactionsRender }) => {
     return buttons;
   };
 
-  const nextTranPage = () => {
-    setVisibleCount((prevCount) => prevCount + 10);
-    renderTransactionItem();
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setVisibleCount(page * 10);
   };
 
   const nextTransactionsRender = () => {
-    console.log("next");
-    nextTranPage();
+    if (currentPage < Math.ceil(dataTransactionsLength / 10)) {
+      handlePageChange(currentPage + 1);
+    }
   };
 
   const prevTransactionsRender = () => {
-    console.log("prev");
+    if (currentPage > 1) {
+      handlePageChange(currentPage - 1);
+    }
   };
 
   const handleDateConversion = (date) => {
@@ -134,7 +146,7 @@ const TransactionsRender = ({ transactionsRender }) => {
                 .slice(0, 5)
                 .map((item, index) => renderTransactionItem(item, index))
             : data.transactions
-                .slice(0, visibleCount)
+                .slice((currentPage - 1) * 10, currentPage * 10)
                 .map((item, index) => renderTransactionItem(item, index))}
         </ul>
       </div>
@@ -158,7 +170,7 @@ const TransactionsRender = ({ transactionsRender }) => {
             Prev
           </button>
           <div className="transactions__info-pages-buttons">
-            {pageButtonsRender({ data })}
+            {pageButtonsRender()}
           </div>
           <button
             className="transactions__info-pages-button-next"
