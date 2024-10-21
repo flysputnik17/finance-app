@@ -133,3 +133,30 @@
   line-height: 150%;
   letter-spacing: 0px;
 }
+
+@media (max-width: 768px) {
+  .transactions {
+    max-width: 768px;
+  }
+
+  .transactions__title {
+    margin: 8px auto 32px 0;
+    height: 38px;
+  }
+  .transactions__info {
+    width: 100%;
+  }
+  .transactions__info-filters {
+    width: 100%;
+  }
+  .transactions__info-main {
+    width: 100%;
+  }
+  .transactions__info-filters-label {
+    max-width: 161px;
+  }
+  .transactions__info-filters-input {
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+}

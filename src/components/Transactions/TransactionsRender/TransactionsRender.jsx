@@ -152,43 +152,52 @@ const TransactionsRender = ({ transactionsRender }) => {
       </div>
       {dataTransactionsLength > 10 && currPage !== "overview" ? (
         <div className="transactions__info-pages">
-          <button
-            className="transactions__info-pages-button"
-            onMouseEnter={(e) => {
-              e.currentTarget.querySelector("img").src = previmgHover;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.querySelector("img").src = previmg;
-            }}
-            onClick={prevTransactionsRender}
-          >
-            <img
-              className="transactions__info-pages-button-img"
-              src={previmg}
-              alt="prev"
-            ></img>
-            Prev
-          </button>
+          {currentPage <= 1 ? (
+            <></>
+          ) : (
+            <button
+              className="transactions__info-pages-button"
+              onMouseEnter={(e) => {
+                e.currentTarget.querySelector("img").src = previmgHover;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.querySelector("img").src = previmg;
+              }}
+              onClick={prevTransactionsRender}
+            >
+              <img
+                className="transactions__info-pages-button-img"
+                src={previmg}
+                alt="prev"
+              ></img>
+              Prev
+            </button>
+          )}
+
           <div className="transactions__info-pages-buttons">
             {pageButtonsRender()}
           </div>
-          <button
-            className="transactions__info-pages-button-next"
-            onMouseEnter={(e) =>
-              (e.currentTarget.querySelector("img").src = nextimgHover)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.querySelector("img").src = nextimg)
-            }
-            onClick={nextTransactionsRender}
-          >
-            Next
-            <img
-              className="transactions__info-pages-button-img"
-              src={nextimg}
-              alt="next"
-            ></img>
-          </button>
+          {currentPage <= dataTransactionsLength / 10 ? (
+            <button
+              className="transactions__info-pages-button-next"
+              onMouseEnter={(e) =>
+                (e.currentTarget.querySelector("img").src = nextimgHover)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.querySelector("img").src = nextimg)
+              }
+              onClick={nextTransactionsRender}
+            >
+              Next
+              <img
+                className="transactions__info-pages-button-img"
+                src={nextimg}
+                alt="next"
+              ></img>
+            </button>
+          ) : (
+            <></>
+          )}
         </div>
       ) : (
         <></>

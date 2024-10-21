@@ -284,11 +284,34 @@
 }
 
 @media (max-width: 768px) {
+  .trans {
+    width: 100%;
+    margin: 24px 0 24px 0;
+  }
   .overview__trans {
     width: 100%;
   }
   .overview__trans-continer {
     width: 100%;
+  }
+  .transactions__titles-text-small-rec {
+    max-width: 272px;
+  }
+  .transactions__titles-text-small {
+    max-width: 88px;
+  }
+  .transactions__titles-text-small-am {
+    max-width: 88px;
+    margin: 0 0 0 32px;
+  }
+  .overview__trans-continer-list-item-main {
+    max-width: 272px;
+    margin: 0 32px 0 0;
+  }
+  .transactions-continer-list-item-category,
+  .transactions-continer-list-item-date,
+  .transactions-continer-list-item-num {
+    max-width: 88px;
   }
 }
 
