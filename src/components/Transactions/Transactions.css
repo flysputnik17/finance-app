@@ -73,7 +73,7 @@
 }
 .transactions__info-filters-label-rest {
   display: flex;
-  max-width: 438px;
+  max-width: 439px;
   height: 45px;
 }
 
@@ -158,5 +158,57 @@
   .transactions__info-filters-input {
     width: 100%;
     text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 465px) {
+  .transactions {
+    max-width: 465px;
+  }
+  .transactions__title {
+    margin: 8px auto 32px 0;
+    height: 38px;
+  }
+  .transactions__info {
+    width: 100%;
+  }
+  .transactions__info-filters {
+    width: 100%;
+  }
+  .transactions__info-main {
+    width: 100%;
+  }
+  .transactions__info-filters-label {
+    max-width: 215px;
+  }
+  .transactions__info-filters-input {
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+  .transactions__info-filters-label-rest {
+    max-width: 64px;
+    height: 20px;
+    justify-content: space-between;
+  }
+  .transactions__info-filters-label-select {
+    max-width: 20px;
+    height: 20px;
+    position: relative;
+  }
+  .transactions__info-filters-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    padding: 0;
+    height: 20px;
+    background-color: transparent;
+    margin: 0;
+    width: 20px;
+    appearance: none;
+  }
+  .transactions__info-filters-label-select-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
   }
 }

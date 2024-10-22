@@ -1,9 +1,118 @@
+import { useContext } from "react";
 import "./Transactions.css";
-import { searchIcon } from "../../Utils/constants";
-
+import {
+  searchIcon,
+  sortByIconMobile,
+  categoryMobileIcon,
+} from "../../Utils/constants";
 import TransactionsRender from "./TransactionsRender/TransactionsRender";
+import mobileScreenContext from "../../contexts/MobileScreenContext";
 
 const Transactions = () => {
+  const isMobile = useContext(mobileScreenContext);
+
+  const renderSelectOptions = (options) =>
+    options.map((option) => (
+      <option
+        key={option.value}
+        className={option.className}
+        value={option.value}
+      >
+        {option.label}
+      </option>
+    ));
+
+  const sortOptions = [
+    {
+      value: "Latest",
+      label: "Latest",
+      className: "transactions__info-filters-option",
+    },
+    {
+      value: "Oldest",
+      label: "Oldest",
+      className: "transactions__info-filters-option",
+    },
+    {
+      value: "A to Z",
+      label: "A to Z",
+      className: "transactions__info-filters-option",
+    },
+    {
+      value: "Z to A",
+      label: "Z to A",
+      className: "transactions__info-filters-option",
+    },
+    {
+      value: "Highest",
+      label: "Highest",
+      className: "transactions__info-filters-option",
+    },
+    {
+      value: "Lowest",
+      label: "Lowest",
+      className: "transactions__info-filters-option",
+    },
+  ];
+
+  const categoryOptions = [
+    {
+      value: "All Transaction",
+      label: "All Transaction",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "Entertainment",
+      label: "Entertainment",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "Bills",
+      label: "Bills",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "Groceries",
+      label: "Groceries",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "Dining Out",
+      label: "Dining Out",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "Transportation",
+      label: "Transportation",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "Personal Care",
+      label: "Personal Care",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "Education",
+      label: "Education",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "Lifestyle",
+      label: "Lifestyle",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "Shopping",
+      label: "Shopping",
+      className: "transactions__info-filters-option2",
+    },
+    {
+      value: "General",
+      label: "General",
+      className: "transactions__info-filters-option2",
+    },
+  ];
+
   return (
     <div className="transactions">
       <h2 className="transactions__title">Transactions</h2>
@@ -20,125 +129,41 @@ const Transactions = () => {
               name="Search transaction"
               placeholder="Search transaction"
               required
-            ></input>
+            />
             <img
               src={searchIcon}
               alt="search icon"
               className="transactions__info-filters-input-icon"
-            ></img>
+            />
           </label>
           <div className="transactions__info-filters-label-rest">
             <label className="transactions__info-filters-label-select">
-              Sort by
+              {!isMobile && "Sort by"}
               <select className="transactions__info-filters-select">
-                <option
-                  className="transactions__info-filters-option"
-                  value="Latest"
-                >
-                  Latest
-                </option>
-                <option
-                  className="transactions__info-filters-option"
-                  value="Oldest"
-                >
-                  Oldest
-                </option>
-                <option
-                  className="transactions__info-filters-option"
-                  value="A to Z"
-                >
-                  A to Z
-                </option>
-                <option
-                  className="transactions__info-filters-option"
-                  value="Z to A"
-                >
-                  Z to A
-                </option>
-                <option
-                  className="transactions__info-filters-option"
-                  value="Highest"
-                >
-                  Highest
-                </option>
-                <option
-                  className="transactions__info-filters-option"
-                  value="Lowest"
-                >
-                  Lowest
-                </option>
+                {isMobile && <option value="" defaultValue></option>}
+                {renderSelectOptions(sortOptions)}
               </select>
+              {isMobile && (
+                <img
+                  className="transactions__info-filters-label-select-icon"
+                  src={sortByIconMobile}
+                  alt="sort by icon"
+                />
+              )}
             </label>
             <label className="transactions__info-filters-label-select">
-              Category
+              {!isMobile && "Category"}
               <select className="transactions__info-filters-select">
-                <option
-                  className="transactions__info-filters-option2"
-                  value="All Transaction"
-                >
-                  All Transaction
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="Entertainment"
-                >
-                  Entertainment
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="Bills"
-                >
-                  Bills
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="Groceries"
-                >
-                  Groceries
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="Dining Out"
-                >
-                  Dining Out
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="Transportation"
-                >
-                  Transportation
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="Personal Care"
-                >
-                  Personal Care
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="Education"
-                >
-                  Education
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="Lifestyle"
-                >
-                  Lifestyle
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="Shopping"
-                >
-                  Shopping
-                </option>
-                <option
-                  className="transactions__info-filters-option2"
-                  value="General"
-                >
-                  General
-                </option>
+                {isMobile && <option value="" defaultValue></option>}
+                {renderSelectOptions(categoryOptions)}
               </select>
+              {isMobile && (
+                <img
+                  src={categoryMobileIcon}
+                  className="transactions__info-filters-label-select-icon"
+                  alt="category icon"
+                />
+              )}
             </label>
           </div>
         </div>

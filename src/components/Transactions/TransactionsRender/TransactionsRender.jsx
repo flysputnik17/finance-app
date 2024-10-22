@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import "./TransactionRender.css";
 import {
   seeDetailsButton,
-  searchIcon,
   previmg,
   nextimg,
   previmgHover,

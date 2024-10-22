@@ -28,6 +28,9 @@ const previmgHover = "/src/assets/previmgHover.svg";
 const nextimg = "/src/assets/nextimg.svg";
 const nextimgHover = "/src/assets/nextimgHover.svg";
 
+const sortByIconMobile = "/src/assets/sortbymobileicon.svg";
+const categoryMobileIcon = "/src/assets/categorymobileicon.svg";
+
 export {
   buttonStyleUnclicked,
   buttonStyleClicked,
@@ -49,4 +52,6 @@ export {
   nextimg,
   previmgHover,
   nextimgHover,
+  sortByIconMobile,
+  categoryMobileIcon,
 };

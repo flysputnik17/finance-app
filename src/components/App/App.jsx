@@ -57,11 +57,11 @@ function App() {
   const handleResize = () => {
     if (window.outerWidth <= 768 && window.outerWidth >= 466) {
       setMinimizeClicked(false);
-      setIsMenuSmall(true);
       setMobileScreen(false);
+      setIsMenuSmall(true);
     } else if (window.outerWidth <= 465) {
-      setMobileScreen(true);
       setMinimizeClicked(false);
+      setMobileScreen(true);
       setIsMenuSmall(true);
     } else {
       setIsMenuSmall(false);
