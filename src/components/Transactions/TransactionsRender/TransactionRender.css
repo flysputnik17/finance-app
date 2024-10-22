@@ -326,4 +326,33 @@
   .overview__trans-continer {
     margin: 0 20px 24px 20px;
   }
+  .transactions-container-list-item {
+    margin: 0 0 33px 0;
+    padding-bottom: 16px;
+  }
+  .overview__trans-continer-list-item-main {
+    width: 100%;
+    margin: 0;
+    height: 43px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+  .overview__trans-continer-list-item-icon {
+    width: 32px;
+    height: 32px;
+    margin: 5.5px 12px 5.5px 0;
+  }
+  .overview__trans-continer-list-item-name {
+    max-width: 147px;
+    margin: 0 0 4px 0;
+  }
+  .transactions-continer-list-item-category {
+    max-width: 147px;
+    margin: 0;
+  }
+  .transactions__info-pages-button,
+  .transactions__info-pages-button-next {
+    max-width: 43px;
+  }
 }

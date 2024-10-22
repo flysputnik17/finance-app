@@ -9,12 +9,14 @@ import {
 } from "../../../Utils/constants";
 import data from "../../../../data.json";
 import CurrentPageContext from "../../../contexts/CurrentPageContext";
+import mobileScreenContext from "../../../contexts/MobileScreenContext";
 
 const TransactionsRender = ({ transactionsRender }) => {
   const [visibleCount, setVisibleCount] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   let dataTransactionsLength = data.transactions.length;
   const currPage = useContext(CurrentPageContext);
+  const isMobile = useContext(mobileScreenContext);
 
   const pageButtonsRender = () => {
     const buttons = [];
@@ -78,14 +80,17 @@ const TransactionsRender = ({ transactionsRender }) => {
     </>
   );
 
-  const renderTransactionsHeader = () => (
-    <div className="transactions__titles">
-      <p className="transactions__titles-text-small-rec">Recipient / Sender</p>
-      <p className="transactions__titles-text-small">Category</p>
-      <p className="transactions__titles-text-small">Transaction Date</p>
-      <p className="transactions__titles-text-small-am">Amount</p>
-    </div>
-  );
+  const renderTransactionsHeader = () =>
+    !isMobile ? (
+      <div className="transactions__titles">
+        <p className="transactions__titles-text-small-rec">
+          Recipient / Sender
+        </p>
+        <p className="transactions__titles-text-small">Category</p>
+        <p className="transactions__titles-text-small">Transaction Date</p>
+        <p className="transactions__titles-text-small-am">Amount</p>
+      </div>
+    ) : null;
 
   const renderTransactionItem = (item, index) => (
     <li
@@ -103,8 +108,13 @@ const TransactionsRender = ({ transactionsRender }) => {
           alt="avatar"
         />
         <p className="overview__trans-continer-list-item-name">{item.name}</p>
+        {isMobile ? (
+          <p className="transactions-continer-list-item-category">
+            {item.category}
+          </p>
+        ) : null}
       </div>
-      {currPage === "transactions" ? (
+      {currPage === "transactions" && !isMobile ? (
         <>
           <p className="transactions-continer-list-item-category">
             {item.category}
@@ -169,7 +179,7 @@ const TransactionsRender = ({ transactionsRender }) => {
                 src={previmg}
                 alt="prev"
               ></img>
-              Prev
+              {isMobile ? "" : "Prev"}
             </button>
           )}
 
@@ -187,7 +197,7 @@ const TransactionsRender = ({ transactionsRender }) => {
               }
               onClick={nextTransactionsRender}
             >
-              Next
+              {isMobile ? "" : "Next"}
               <img
                 className="transactions__info-pages-button-img"
                 src={nextimg}
