@@ -35,6 +35,7 @@ const OverviewBudgets = ({ budgetsRender }) => {
           animation: true,
           animation: {
             animateScale: true,
+            animateRotate: true,
           },
           plugins: {
             legend: {
@@ -82,12 +83,28 @@ const OverviewBudgets = ({ budgetsRender }) => {
 
   const renderBudgets = ({ item, index }) => (
     <li key={index} className="overview__budgets-main-info-list-item">
-      <div className="overview__budgets-main-info-list-item-div">
+      <div
+        className={
+          currentPage === "budgets"
+            ? "overview__budgets-main-info-list-item-div-page"
+            : "overview__budgets-main-info-list-item-div"
+        }
+      >
         <div
-          className="overview__budgets-main-info-list-item-side"
+          className={
+            currentPage === "budgets"
+              ? "overview__budgets-main-info-list-item-side-page"
+              : "overview__budgets-main-info-list-item-side"
+          }
           style={{ backgroundColor: item.theme }}
         ></div>
-        <div>
+        <div
+          className={
+            currentPage === "budgets"
+              ? "overview__budgets-main-info-list-item-page"
+              : ""
+          }
+        >
           <p className="overview__budgets-main-info-list-item-title">
             {item.category}
           </p>
@@ -110,29 +127,50 @@ const OverviewBudgets = ({ budgetsRender }) => {
 
   return (
     <div className="overview__budgets animate__animated animate__fadeInRight animate__delay-0.9s">
-      <h2 className="overview__pots-title">Budgets</h2>
       {currentPage === "budgets" ? (
         <></>
       ) : (
-        <button
-          className="overview__pots-button"
-          type="button"
-          onClick={budgetsRender}
-        >
-          See Details
-          <img
-            className="overview__pots-button-img"
-            src={seeDetailsButton}
-            alt="see details"
-          ></img>
-        </button>
+        <>
+          <h2 className="overview__pots-title">Budgets</h2>
+          <button
+            className="overview__pots-button"
+            type="button"
+            onClick={budgetsRender}
+          >
+            See Details
+            <img
+              className="overview__pots-button-img"
+              src={seeDetailsButton}
+              alt="see details"
+            ></img>
+          </button>
+        </>
       )}
 
-      <div className="overview__budgets-main">
+      <div
+        className={
+          currentPage === "budgets"
+            ? "overview__budgets-main-page"
+            : "overview__budgets-main"
+        }
+      >
         <div className="overview__budgets-main-pie">
-          <canvas id="myChart">test</canvas>
+          <canvas id="myChart"></canvas>
         </div>
-        <div className="overview__budgets-main-info">
+        <div
+          className={
+            currentPage === "budgets"
+              ? "overview__budgets-main-info-page"
+              : "overview__budgets-main-info"
+          }
+        >
+          {currentPage === "budgets" ? (
+            <>
+              <p className="overview__budgets-main-info-summary">
+                Spending Summary
+              </p>
+            </>
+          ) : null}
           <ul className="overview__budgets-main-info-list">
             {sortedBudgets.map((item, index) => renderBudgets({ item, index }))}
           </ul>

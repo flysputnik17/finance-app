@@ -9,6 +9,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin: 0 0 32px 0;
 }
 .budgets__header-title {
   margin: 8px auto 32px 0;
@@ -20,9 +21,11 @@
   font-size: 32px;
   letter-spacing: 0px;
   line-height: 120%;
+  list-style: none;
 }
 .budgets__header-add-button {
-  width: 100px;
+  padding: 0;
+  width: 155px;
   height: 40px;
   background-color: rgb(0, 0, 0);
   color: white;
@@ -39,19 +42,57 @@
 .budgets__info {
   width: 100%;
   margin: 0 0 32px 0;
-  background-color: white;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: flex-start;
 }
 .budgets__info-left {
   width: 100%;
-  height: 45px;
-  margin: 32px 32px 0 32px;
+  height: 100%;
+  margin: 0 32px 0 32px;
+}
+.budgets__info-left-elements {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+}
+.budgets__info-left-elements-item {
+  width: 100%;
+  height: 510px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.budgets__info-left-elements-item-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.budgets__info-left-elements-item-side {
+  width: 4px;
+  height: 100%;
+}
+.budgets__budgets-main-info-list-item-title {
+  margin: 0 0 4px 16px;
+  color: rgb(105, 104, 104);
+  font-family: "Text Preset5", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  white-space: nowrap;
+}
+.budgets__budgets-main-info-list-item-num {
+  color: rgb(32, 31, 36);
+  font-family: "Text Preset4 bold", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  margin: 0 75px 0 16px;
 }
