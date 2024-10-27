@@ -1,7 +1,27 @@
 import { seeDetailsButton, potsGreenIcon } from "../../../Utils/constants";
+import data from "../../../../data.json";
 
 import "./OverviewPots.css";
 const OverviewPots = ({ potsRender }) => {
+  const renderPots = ({ item, index }) => (
+    <li className="overview__pots-info-second-list-item" key={index}>
+      <div className="overview__budgets-main-info-list-item-div">
+        <div
+          className="overview__budgets-main-info-list-item-side"
+          style={{ backgroundColor: item.theme }}
+        ></div>
+        <div>
+          <p className="overview__pots-info-second-list-item-title">
+            {item.name}
+          </p>
+          <p className="overview__pots-info-second-list-item-num">
+            ${item.total}
+          </p>
+        </div>
+      </div>
+    </li>
+  );
+
   return (
     <div className="overview__pots animate__animated animate__zoomIn animate__delay-0.3s">
       <h2 className="overview__pots-title">Pots</h2>
@@ -31,28 +51,9 @@ const OverviewPots = ({ potsRender }) => {
         </div>
         <div className="overview__pots-info-second">
           <ul className="overview__pots-info-second-list">
-            <li className="overview__pots-info-second-list-item">
-              <p className="overview__pots-info-second-list-item-title">
-                Savings
-              </p>
-              <p className="overview__pots-info-second-list-item-num">$159</p>
-            </li>
-            <li className="overview__pots-info-second-list-item">
-              <p className="overview__pots-info-second-list-item-title">Gift</p>
-              <p className="overview__pots-info-second-list-item-num">$40</p>
-            </li>
-            <li className="overview__pots-info-second-list-item">
-              <p className="overview__pots-info-second-list-item-title">
-                Concert Ticket
-              </p>
-              <p className="overview__pots-info-second-list-item-num">$110</p>
-            </li>
-            <li className="overview__pots-info-second-list-item">
-              <p className="overview__pots-info-second-list-item-title">
-                New Laptop
-              </p>
-              <p className="overview__pots-info-second-list-item-num">$10</p>
-            </li>
+            {data.pots
+              .slice(0, 4)
+              .map((item, index) => renderPots({ item, index }))}
           </ul>
         </div>
       </div>

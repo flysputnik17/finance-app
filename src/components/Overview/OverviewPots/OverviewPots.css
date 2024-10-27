@@ -110,12 +110,11 @@
 
 .overview__pots-info-second-list-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 0 16px 16px 0;
   padding: 0;
   width: calc(50% - 16px);
   height: auto;
-  border-left: 4px solid rgb(39, 124, 120);
   box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 

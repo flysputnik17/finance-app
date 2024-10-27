@@ -18,6 +18,8 @@ import {
   billsIconBuutonDefault,
   billsIconBuutonSelected,
   minimizeButtonClicked,
+  minimizeIconNormal,
+  minimizeIconSmall,
 } from "../../../Utils/constants";
 
 const SidebarDefault = ({
@@ -164,7 +166,7 @@ const SidebarDefault = ({
               onClick={minimize}
             >
               <img
-                src="/src/assets/icon-minimize-menu.svg"
+                src={!minimize ? minimizeIconNormal : minimizeIconSmall}
                 alt=""
                 className="sidebar__continer-butoms-icon"
               />

@@ -36,14 +36,12 @@
 }
 .overview__budgets-main-pie {
   width: 100%;
-  height: 240px;
+  height: 260px;
   display: flex;
-  margin: 31px 16px 31px 35px;
+  justify-content: center;
+  margin: 11px 16px 11px 10px;
 }
-.overview__budgets-main-pie-img {
-  border-style: none;
-  margin: 0 auto 0 auto;
-}
+
 .overview__budgets-main-info {
   width: 100%;
   height: 100%;
@@ -59,14 +57,23 @@
 }
 .overview__budgets-main-info-list-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 0 16px 16px 0;
   padding: 0;
   width: calc(50% - 16px);
   height: auto;
-  border-left: 5px solid rgb(39, 124, 120);
+
   box-sizing: border-box;
 }
+.overview__budgets-main-info-list-item-div {
+  display: flex;
+  flex-direction: row;
+}
+.overview__budgets-main-info-list-item-side {
+  width: 4px;
+  height: 100%;
+}
+
 .overview__budgets-main-info-list-item-title {
   margin: 0 0 4px 16px;
   color: rgb(105, 104, 104);

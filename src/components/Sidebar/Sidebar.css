@@ -17,10 +17,10 @@
 }
 .sidebar__continer-butoms {
   width: 100%;
-  height: 376px;
+  height: 800px;
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
+  margin: 24px 0 24px 0;
 }
 
 .sidebar__continer-buttons-text {

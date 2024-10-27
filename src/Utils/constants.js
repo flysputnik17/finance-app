@@ -18,6 +18,9 @@ const billsIconBuutonSelected = "/src/assets/billsSelected.svg";
 
 const minimizeButtonClicked = "animate__animated animate__bounceOutLeft";
 
+const minimizeIconNormal = "/src/assets/icon-minimize-menu.svg";
+const minimizeIconSmall = "/src/assets/icon-minimize-left.svg";
+
 const seeDetailsButton = "/src/assets/seeDetailsButton.svg";
 const potsGreenIcon = "/src/assets/icon-pot.svg";
 
@@ -54,4 +57,6 @@ export {
   nextimgHover,
   sortByIconMobile,
   categoryMobileIcon,
+  minimizeIconNormal,
+  minimizeIconSmall,
 };
