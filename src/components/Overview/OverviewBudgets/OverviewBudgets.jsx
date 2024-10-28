@@ -32,18 +32,13 @@ const OverviewBudgets = ({ budgetsRender }) => {
       chartRef.current = new Chart(ctx, {
         type: "doughnut",
         options: {
-          animation: true,
           animation: {
             animateScale: true,
             animateRotate: true,
           },
           plugins: {
-            legend: {
-              display: true,
-            },
-            tooltip: {
-              enabled: true,
-            },
+            legend: { display: true },
+            tooltip: { enabled: true },
           },
           cutout: "70%",
         },
@@ -53,19 +48,44 @@ const OverviewBudgets = ({ budgetsRender }) => {
             beforeDraw: function (chart) {
               const { width, height, ctx } = chart;
               ctx.restore();
-              const fontSize = (height / 114).toFixed(2);
-              ctx.font = `${fontSize}em sans-serif,Text Preset1, Arial, Helvetica, sans-serif`;
-              ctx.textBaseline = "middle";
+              const fontSize = (height / 130).toFixed(2);
+              ctx.font = `${fontSize}em Text Preset1, Arial, Helvetica, sans-serif`;
+              ctx.textBaseline = "center";
 
+              // Text for "text"
               const text = `$${data.budgets
-                .reduce((total, item) => total + item.maximum, 0)
-                .toString()}`; // Sum all "maximum" values, convert to string, and prepend $
+                .reduce((total, item) => total + item.spent, 0)
+                .toString()}`;
+
               const textX = Math.round(
                 (width - ctx.measureText(text).width) / 2
               );
-              const textY = height / 1.6;
-
+              const textY = height / 1.7;
+              ctx.fillStyle = "#000"; // Reset font color for "text"
               ctx.fillText(text, textX, textY);
+              ctx.save();
+            },
+          },
+          {
+            beforeDraw: function (chart) {
+              const { width, height, ctx } = chart;
+              ctx.restore();
+              const fontSize = (height / 300).toFixed(2);
+              ctx.font = `${fontSize}em Text Preset1, Arial, Helvetica, sans-serif`;
+              ctx.textBaseline = "center";
+
+              // Text for "text2" with specific font color
+              const fontColor = "#696868";
+              ctx.fillStyle = fontColor;
+              const text2 = `of $${data.budgets
+                .reduce((total, item) => total + item.maximum, 0)
+                .toString()} limit`;
+
+              const textX2 = Math.round(
+                (width - ctx.measureText(text2).width) / 2
+              );
+              const textY2 = height / 1.4;
+              ctx.fillText(text2, textX2, textY2);
               ctx.save();
             },
           },
@@ -82,7 +102,14 @@ const OverviewBudgets = ({ budgetsRender }) => {
   }, []);
 
   const renderBudgets = ({ item, index }) => (
-    <li key={index} className="overview__budgets-main-info-list-item">
+    <li
+      key={index}
+      className={
+        currentPage === "budgets"
+          ? "overview__budgets-main-info-list-item-page"
+          : "overview__budgets-main-info-list-item"
+      }
+    >
       <div
         className={
           currentPage === "budgets"
@@ -101,7 +128,7 @@ const OverviewBudgets = ({ budgetsRender }) => {
         <div
           className={
             currentPage === "budgets"
-              ? "overview__budgets-main-info-list-item-page"
+              ? "overview__budgets-main-info-list-item-page-div"
               : ""
           }
         >
@@ -109,8 +136,13 @@ const OverviewBudgets = ({ budgetsRender }) => {
             {item.category}
           </p>
           <p className="overview__budgets-main-info-list-item-num">
-            ${item.maximum}
+            ${item.maximum.toFixed(2)}
           </p>
+          {currentPage === "budgets" ? (
+            <p className="overview__budgets-main-info-list-item-num-sec">
+              of ${item.spent.toFixed(2)}
+            </p>
+          ) : null}
         </div>
       </div>
     </li>

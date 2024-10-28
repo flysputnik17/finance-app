@@ -34,6 +34,8 @@ const nextimgHover = "/src/assets/nextimgHover.svg";
 const sortByIconMobile = "/src/assets/sortbymobileicon.svg";
 const categoryMobileIcon = "/src/assets/categorymobileicon.svg";
 
+const budgetsDots = "/src/assets/dots.svg";
+
 export {
   buttonStyleUnclicked,
   buttonStyleClicked,
@@ -59,4 +61,5 @@ export {
   categoryMobileIcon,
   minimizeIconNormal,
   minimizeIconSmall,
+  budgetsDots,
 };

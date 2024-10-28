@@ -3,6 +3,7 @@ import Chart from "chart.js/auto";
 import data from "../../../data.json";
 import "./Budgets.css";
 import OverviewBudgets from "../Overview/OverviewBudgets/OverviewBudgets";
+import { budgetsDots } from "../../Utils/constants";
 
 const Budgets = () => {
   const chartRefs = useRef([]);
@@ -13,7 +14,7 @@ const Budgets = () => {
         labels: [budget.category],
         datasets: [
           {
-            data: [budget.maximum],
+            data: [budget.spent],
             backgroundColor: [budget.theme],
             hoverOffset: 5,
           },
@@ -33,6 +34,31 @@ const Budgets = () => {
           options: {
             animation: true,
             indexAxis: "y",
+            borderWidth: 0,
+            maxBarThickness: 32, // Set the maximum bar thickness to 32px
+            borderRadius: 10,
+            responsive: true,
+            maintainAspectRatio: false, // Ensure the chart takes all available space
+            scales: {
+              x: {
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false, // Hide the y-axis labels to make the bar take all the height
+                },
+                beginAtZero: true,
+                max: data.budgets[index].maximum,
+              },
+              y: {
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false, // Hide the y-axis labels to make the bar take all the height
+                },
+              },
+            },
             plugins: {
               legend: {
                 display: false,
@@ -41,6 +67,7 @@ const Budgets = () => {
                 enabled: true,
               },
             },
+            backgroundColor: "transparent", // Set the background color to transparent
           },
           data: chartData,
         });
@@ -48,8 +75,9 @@ const Budgets = () => {
     });
 
     // Cleanup function to destroy the chart instances when the component unmounts
+    const currentCharts = chartRefs.current;
     return () => {
-      chartRefs.current.forEach((chart) => {
+      currentCharts.forEach((chart) => {
         if (chart) {
           chart.destroy();
         }
@@ -75,19 +103,27 @@ const Budgets = () => {
                 className="budgets__info-left-elements-item"
               >
                 <div className="budgets__info-left-elements-item-header">
+                  <div
+                    className="budgets__info-left-elements-item-header-dot"
+                    style={{ backgroundColor: budget.theme }}
+                  ></div>
                   <p className="budgets__info-left-elements-item-header-title">
                     {budget.category}
                   </p>
                   <button
                     className="budgets__info-left-elements-item-header-button"
                     type="button"
+                    style={{ backgroundImage: `url(${budgetsDots})` }}
                   ></button>
                 </div>
                 <div className="budgets__info-left-elements-item-money">
                   <p className="budgets__info-left-elements-item-money-max">
                     Maximum of ${budget.maximum.toFixed(2)}
                   </p>
-                  <canvas id={`myBar-${index}`}></canvas>
+                  <canvas
+                    id={`myBar-${index}`}
+                    className="budgets__info-left-elements-item-money-canvas"
+                  ></canvas>
                   <div className="budgets__info-left-elements-item-div">
                     <div
                       className="budgets__info-left-elements-item-side"

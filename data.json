@@ -402,22 +402,26 @@
     {
       "category": "Entertainment",
       "maximum": 50.0,
-      "theme": "#277C78"
+      "theme": "#277C78",
+      "spent": 15.0
     },
     {
       "category": "Bills",
       "maximum": 750.0,
-      "theme": "#82C9D7"
+      "theme": "#82C9D7",
+      "spent": 150.0
     },
     {
       "category": "Dining Out",
       "maximum": 75.0,
-      "theme": "#F2CDAC"
+      "theme": "#F2CDAC",
+      "spent": 133.0
     },
     {
       "category": "Personal Care",
       "maximum": 100.0,
-      "theme": "#626070"
+      "theme": "#626070",
+      "spent": 40.0
     }
   ],
   "pots": [
