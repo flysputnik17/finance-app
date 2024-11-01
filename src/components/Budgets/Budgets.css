@@ -287,9 +287,6 @@
   white-space: nowrap;
 }
 @media (max-width: 768px) {
-  .budgets {
-    max-width: 768px;
-  }
   .budgets__header {
     width: 100%;
   }
@@ -314,5 +311,23 @@
   .budgets__info-left {
     width: 100%;
     margin: 0;
+  }
+}
+@media (max-width: 465px) {
+  .overview__budgets-main-page {
+    flex-direction: column;
+    max-width: 303px;
+  }
+  .overview__budgets-main-pie {
+    margin: 24px 20px 32px 20px;
+    width: 100%;
+  }
+  .overview__budgets-main-info-page {
+    width: 303px;
+    height: 223px;
+    margin: 0 20px 24px 20px;
+  }
+  .overview__budgets {
+    height: 583px;
   }
 }
