@@ -65,7 +65,7 @@
 .budgets__info-left-elements-item {
   margin-bottom: 24px;
   width: 100%;
-  height: 510px;
+  height: 680px;
   background-color: white;
   border-radius: 20px;
 }
@@ -122,7 +122,11 @@
 .budgets__info-left-elements-item-money-canvas {
   width: 100%;
   height: 32px; /* Ensure the height is exactly 32px */
-  background-color: transparent; /* Set to transparent if there’s still a background color */
+  background-color: rgb(
+    248,
+    244,
+    240
+  ); /* Set to transparent if there’s still a background color */
   border: none; /* Remove any borders */
   padding: 0; /* Ensure no extra padding is adding extra height */
   margin: 0; /* Remove any unnecessary margin */
@@ -130,11 +134,27 @@
 .budgets__info-left-elements-item-div {
   display: flex;
   flex-direction: row;
+  margin-top: 16px;
 }
 
 .budgets__info-left-elements-item-side {
   width: 4px;
   height: 100%;
+}
+.budgets__budgets-main-info-list-item-info {
+  width: 100%;
+  height: 43px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.budgets__budgets-main-info-list-item-info-color {
+  width: 4px;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgb(248, 244, 240);
 }
 .budgets__budgets-main-info-list-item-title {
   margin: 0 0 4px 16px;
@@ -154,4 +174,145 @@
   line-height: 150%;
   letter-spacing: 0px;
   margin: 0 75px 0 16px;
+}
+.budgets__info-left-elements-item-spending {
+  width: 100%;
+  margin-top: 20px;
+  background-color: rgb(248, 244, 240);
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+}
+.budgets__info-left-elements-item-spending-div {
+  margin: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+  align-items: center;
+}
+
+.budgets__info-left-elements-item-spending-div-title {
+  font-family: "Text Preset3", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  width: 126px;
+  margin: 20px auto 0 0;
+}
+
+.budgets__info-left-elements-item-spending-div-button {
+  border: none;
+  width: 71px;
+  height: 21px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 20px 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  color: rgb(105, 104, 104);
+  font-family: "Text Preset4", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  cursor: pointer;
+}
+.budgets__info-left-elements-item-spending-div-button-img {
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  margin: 4.5px 0 4.5px 12px;
+}
+.budgets__info-left-elements-item-spending-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px 20px 20px 20px;
+  padding: 0;
+  list-style: none;
+}
+.budgets__trans-continer-list-item {
+  display: flex;
+  flex-direction: row;
+  margin: 12px 0 0 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgb(113, 109, 109);
+  height: 40px;
+  width: 100%;
+}
+.budgets__trans-continer-list-item:first-child {
+  margin: 0 0 0 0;
+}
+.budgets__trans-continer-list-item:last-child {
+  padding-bottom: 20px;
+  border-bottom: none;
+}
+
+.budgets__trans-continer-list-item-main {
+  display: flex;
+  width: 100%;
+  margin: 0 32px 0 16px;
+}
+.budgets__trans-continer-list-item-info {
+  width: 68px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.budgets__trans-continer-list-item-info-num {
+  width: 40px;
+  height: 18px;
+  margin: 0 0 4px 28px;
+  font-family: "Text Preset4 bold", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  text-align: end;
+}
+.budgets__trans-continer-list-item-info-date {
+  width: 68px;
+  height: 18px;
+  margin: 0;
+  font-family: "Text Preset5", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  color: rgb(105, 104, 104);
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .budgets {
+    max-width: 768px;
+  }
+  .budgets__header {
+    width: 100%;
+  }
+  .budgets__info {
+    flex-direction: column;
+  }
+  .overview__budgets {
+    width: 100%;
+  }
+  .overview__budgets-main-page {
+    flex-direction: row;
+  }
+  .overview__budgets-main-pie {
+    width: 296px;
+    height: 280px;
+    margin: 32px 32px 32px 32px;
+  }
+  .overview__budgets-main-info-list {
+    width: 296px;
+    height: 233px;
+  }
+  .budgets__info-left {
+    width: 100%;
+    margin: 0;
+  }
 }

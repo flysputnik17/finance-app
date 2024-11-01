@@ -35,6 +35,8 @@ const OverviewBudgets = ({ budgetsRender }) => {
           animation: {
             animateScale: true,
             animateRotate: true,
+            duration: 1500,
+            delay: 250,
           },
           plugins: {
             legend: { display: true },
@@ -155,7 +157,7 @@ const OverviewBudgets = ({ budgetsRender }) => {
       (item, index, self) =>
         index === self.findIndex((t) => t.category === item.category)
     )
-    .slice(0, 4);
+    .slice(0, data.budgets.length);
 
   return (
     <div className="overview__budgets animate__animated animate__fadeInRight animate__delay-0.9s">
