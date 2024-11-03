@@ -78,6 +78,12 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 296px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 .overview__budgets-main-info-list-item {
   display: flex;
@@ -170,12 +176,12 @@
 
 @media (max-width: 465px) {
   .overview__budgets {
-    height: 466px;
+    height: 583px;
     margin: 0 0 16px 0;
     width: 100%;
+    justify-content: center;
   }
   .overview__budgets-main {
-    height: 374px;
     flex-direction: column;
     margin: 0 20px 24px 20px;
   }
@@ -194,5 +200,6 @@
   .overview__budgets-main-info-list {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
   }
 }

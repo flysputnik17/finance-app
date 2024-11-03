@@ -1,15 +1,17 @@
-import { useEffect, useRef, useContext } from "react";
+import { useEffect, useRef, useContext, useState } from "react";
 import Chart from "chart.js/auto";
 import data from "../../../data.json";
 import "./Budgets.css";
 import OverviewBudgets from "../Overview/OverviewBudgets/OverviewBudgets";
-import mobileScreenContext from "../../contexts/MobileScreenContext";
+// import mobileScreenContext from "../../contexts/MobileScreenContext";
+import AddBudgetPopUp from "../PopUpWithForm/BudgetsPopUp/BudgetsPopUp";
 
 import { budgetsDots, seeDetailsButton } from "../../Utils/constants";
 
 const Budgets = () => {
+  const [activeModal, setActiveModal] = useState("");
   const chartRefs = useRef([]);
-  const isMobile = useContext(mobileScreenContext);
+  // const isMobile = useContext(mobileScreenContext);
 
   useEffect(() => {
     data.budgets.forEach((budget, index) => {
@@ -88,6 +90,29 @@ const Budgets = () => {
       });
     };
   }, []);
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleExit = (evt) => {
+      if (evt.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    const handleOverlay = (evt) => {
+      if (evt.target.classList.contains("modal_opened")) {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleExit);
+    document.addEventListener("mousedown", handleOverlay);
+
+    return () => {
+      document.removeEventListener("keydown", handleExit);
+      document.removeEventListener("mousedown", handleOverlay);
+    };
+  }, [activeModal]);
   const handleDateConversion = (date) => {
     const options = { day: "numeric", month: "short", year: "numeric" };
     return new Date(date)
@@ -116,11 +141,28 @@ const Budgets = () => {
     </li>
   );
 
+  const addBudgetPopUp = () => {
+    setActiveModal("addBudget");
+  };
+
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
+  const handleAddBudget = () => {
+    console.log("Add budget");
+    addBudgetPopUp();
+  };
+
   return (
     <div className="budgets">
       <div className="budgets__header">
         <h2 className="budgets__header-title">Budgets</h2>
-        <button className="budgets__header-add-button" type="button">
+        <button
+          className="budgets__header-add-button"
+          type="button"
+          onClick={handleAddBudget}
+        >
           + Add New Budget
         </button>
       </div>
@@ -213,6 +255,13 @@ const Budgets = () => {
           </ul>
         </div>
       </div>
+      {activeModal === "addBudget" && (
+        <AddBudgetPopUp
+          isOpen={activeModal === "addBudget"}
+          onClose={closeActiveModal}
+          onSubmit={() => console.log("Submit")}
+        />
+      )}
     </div>
   );
 };

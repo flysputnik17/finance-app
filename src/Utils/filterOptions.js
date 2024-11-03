@@ -1,3 +1,5 @@
+import { color } from "chart.js/helpers";
+
 const sortOptions = [
   {
     value: "Latest",
@@ -33,8 +35,8 @@ const sortOptions = [
 
 const categoryOptions = [
   {
-    value: "All Transaction",
-    label: "All Transaction",
+    value: "Select",
+    label: "Select",
     className: "transactions__info-filters-option2",
   },
   {
@@ -88,5 +90,77 @@ const categoryOptions = [
     className: "transactions__info-filters-option2",
   },
 ];
+const theme = [
+  {
+    value: "Green",
+    label: "Green",
+    theme: "#277C78",
+  },
+  {
+    value: "Yellow",
+    label: "Yellow",
+    theme: "#F2CDAC",
+  },
+  {
+    value: "Cyan",
+    label: "Cyan",
+    theme: "#82C9D7",
+  },
+  {
+    value: "Navy",
+    label: "Navy",
+    theme: "#626070",
+  },
+  {
+    value: "Red",
+    label: "Red",
+    theme: "#C94736",
+  },
+  {
+    value: "Purple",
+    label: "Purple",
+    theme: "#826CB0",
+  },
+  {
+    value: "Turquoise",
+    label: "Turquoise",
+    theme: "#597C7C",
+  },
+  {
+    value: "Brown",
+    label: "Brown",
+    theme: "#93674F",
+  },
+  {
+    value: "Magenta",
+    label: "Magenta",
+    theme: "#934F6F",
+  },
+  {
+    value: "Blue",
+    label: "Blue",
+    theme: "#3F82B2",
+  },
+  {
+    value: "Navy Grey",
+    label: "Navy Grey",
+    theme: "#97A0AC",
+  },
+  {
+    value: "Army Green",
+    label: "Army Green",
+    theme: "#7F9161",
+  },
+  {
+    value: "Gold",
+    label: "Gold",
+    theme: "#CAB361",
+  },
+  {
+    value: "Orange",
+    label: "Orange",
+    theme: "#BE6C49",
+  },
+];
 
-export { sortOptions, categoryOptions };
+export { sortOptions, categoryOptions, theme };

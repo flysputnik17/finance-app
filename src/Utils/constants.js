@@ -36,6 +36,8 @@ const categoryMobileIcon = "/src/assets/categorymobileicon.svg";
 
 const budgetsDots = "/src/assets/dots.svg";
 
+const modalCloseBtn = "/src/assets/modalCloseBTN.svg";
+
 export {
   buttonStyleUnclicked,
   buttonStyleClicked,
@@ -62,4 +64,5 @@ export {
   minimizeIconNormal,
   minimizeIconSmall,
   budgetsDots,
+  modalCloseBtn,
 };
