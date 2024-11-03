@@ -1,9 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import PopUpWithForm from "../PopUpWithForm";
 import { categoryOptions, theme } from "../../../Utils/filterOptions";
 
 const AddBudgetPopUp = ({ onClose, isOpen, onSubmit }) => {
+  const [MaximumSpend, setMaximumSpend] = useState("");
+  const handleMaximumSpendChange = (e) => {
+    const value = e.target.value;
+    setMaximumSpend(value);
+  };
+  useEffect(() => {
+    if (MaximumSpend.length <= 0) {
+      document.getElementById("addBudgetButton").disabled = true;
+    } else {
+      document.getElementById("addBudgetButton").disabled = false;
+    }
+  });
   const renderSelectOptions = (options) =>
     options.map((option) => (
       <option
@@ -84,10 +96,12 @@ const AddBudgetPopUp = ({ onClose, isOpen, onSubmit }) => {
         Maximum Spend
         <input
           className="modal__input"
-          id="Maximum Spend"
+          id="MaximumSpend"
           name="Maximum Spend"
           type="text"
           placeholder="$ e.g. 2000"
+          value={MaximumSpend}
+          onChange={handleMaximumSpendChange}
         />
       </label>
       <label htmlFor="Theme" className="modal__label">
@@ -98,8 +112,9 @@ const AddBudgetPopUp = ({ onClose, isOpen, onSubmit }) => {
       <button
         type="submit"
         disabled
-        id="signupButton"
+        id="addBudgetButton"
         className="modal__button"
+        onClick={onClose}
       >
         Add Budget
       </button>
