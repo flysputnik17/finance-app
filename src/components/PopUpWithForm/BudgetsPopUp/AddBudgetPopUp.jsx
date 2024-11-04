@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import PopUpWithForm from "../PopUpWithForm";
 import { categoryOptions, theme } from "../../../Utils/filterOptions";
 
-const AddBudgetPopUp = ({ onClose, isOpen, onSubmit }) => {
+const BudgetPopUp = ({ onClose, activeModal, onSubmit }) => {
   const [MaximumSpend, setMaximumSpend] = useState("");
+  const [disabled, setDisabled] = useState(true);
   const handleMaximumSpendChange = (e) => {
     const value = e.target.value;
     setMaximumSpend(value);
@@ -12,8 +14,10 @@ const AddBudgetPopUp = ({ onClose, isOpen, onSubmit }) => {
   useEffect(() => {
     if (MaximumSpend.length <= 0) {
       document.getElementById("addBudgetButton").disabled = true;
+      setDisabled(true);
     } else {
       document.getElementById("addBudgetButton").disabled = false;
+      setDisabled(false);
     }
   });
   const renderSelectOptions = (options) =>
@@ -78,7 +82,7 @@ const AddBudgetPopUp = ({ onClose, isOpen, onSubmit }) => {
   return (
     <PopUpWithForm
       titleText="Add New Budget"
-      isOpen={isOpen}
+      activeModal={activeModal}
       onClose={onClose}
       onSubmit={onSubmit}
     >
@@ -113,7 +117,11 @@ const AddBudgetPopUp = ({ onClose, isOpen, onSubmit }) => {
         type="submit"
         disabled
         id="addBudgetButton"
-        className="modal__button"
+        className={
+          disabled
+            ? "modal__button-dis animate__animated animate__headShake animate__delay-0.9s"
+            : "modal__button"
+        }
         onClick={onClose}
       >
         Add Budget
@@ -121,5 +129,10 @@ const AddBudgetPopUp = ({ onClose, isOpen, onSubmit }) => {
     </PopUpWithForm>
   );
 };
+BudgetPopUp.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  activeModal: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
-export default AddBudgetPopUp;
+export default BudgetPopUp;

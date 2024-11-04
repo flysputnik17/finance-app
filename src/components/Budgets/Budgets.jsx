@@ -4,7 +4,7 @@ import data from "../../../data.json";
 import "./Budgets.css";
 import OverviewBudgets from "../Overview/OverviewBudgets/OverviewBudgets";
 // import mobileScreenContext from "../../contexts/MobileScreenContext";
-import AddBudgetPopUp from "../PopUpWithForm/BudgetsPopUp/BudgetsPopUp";
+import AddBudgetPopUp from "../PopUpWithForm/BudgetsPopUp/AddBudgetPopUp";
 
 import { budgetsDots, seeDetailsButton } from "../../Utils/constants";
 
@@ -141,17 +141,50 @@ const Budgets = () => {
     </li>
   );
 
-  const addBudgetPopUp = () => {
-    setActiveModal("addBudget");
-  };
-
-  const closeActiveModal = () => {
+  const closeActiveModal = (e) => {
     setActiveModal("");
+    e.preventDefault();
   };
 
   const handleAddBudget = () => {
     console.log("Add budget");
-    addBudgetPopUp();
+    setActiveModal("addBudget");
+  };
+
+  const handleEditBudget = () => {
+    console.log("Edit budget");
+    setActiveModal("editBudget");
+  };
+
+  const EditDropdown = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+    console.log("Edit dropdown");
+    return (
+      <div className="edit__dropdown">
+        <button
+          className="edit__dropdown-header-button"
+          type="button"
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{ backgroundImage: `url(${budgetsDots})` }}
+        ></button>
+        <div
+          className={
+            menuOpen ? "edit__dropdown-menu" : "edit__dropdown-menu-close"
+          }
+        >
+          <button
+            className="edit__dropdown-button"
+            type="buttton"
+            onClick={handleEditBudget}
+          >
+            Edit Budget
+          </button>
+          <button className="edit__dropdown-button" type="buttton">
+            Delete Budget
+          </button>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -192,11 +225,7 @@ const Budgets = () => {
                     <p className="budgets__info-left-elements-item-header-title">
                       {budget.category}
                     </p>
-                    <button
-                      className="budgets__info-left-elements-item-header-button"
-                      type="button"
-                      style={{ backgroundImage: `url(${budgetsDots})` }}
-                    ></button>
+                    {EditDropdown()}
                   </div>
                   <div className="budgets__info-left-elements-item-money">
                     <p className="budgets__info-left-elements-item-money-max">
@@ -257,7 +286,7 @@ const Budgets = () => {
       </div>
       {activeModal === "addBudget" && (
         <AddBudgetPopUp
-          isOpen={activeModal === "addBudget"}
+          activeModal={activeModal === "addBudget"}
           onClose={closeActiveModal}
           onSubmit={() => console.log("Submit")}
         />

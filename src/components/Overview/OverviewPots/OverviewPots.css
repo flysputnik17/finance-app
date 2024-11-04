@@ -37,6 +37,11 @@
   line-height: 150%;
   letter-spacing: 0px;
 }
+.overview__pots-button:hover {
+  cursor: pointer;
+  opacity: 1;
+  transform: scale(1.1);
+}
 .overview__pots-button-img {
   width: 12px;
   height: 12px;

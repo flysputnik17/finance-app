@@ -26,27 +26,21 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   const overviewRender = () => {
-    console.log("overviewRender button clicked");
     setCurrentRoute("overview");
   };
   const transactionsRender = () => {
-    console.log("transactionsRender button clicked");
     setCurrentRoute("transactions");
   };
   const budgetsRender = () => {
-    console.log("budgetsender button clicked");
     setCurrentRoute("budgets");
   };
   const potsRender = () => {
-    console.log("potsRender button clicked");
     setCurrentRoute("pots");
   };
   const billsRender = () => {
-    console.log("billsRender button clicked");
     setCurrentRoute("bills");
   };
   const minimize = () => {
-    console.log("minimize");
     if (minimizeClicked) {
       setMinimizeClicked(false);
     } else {

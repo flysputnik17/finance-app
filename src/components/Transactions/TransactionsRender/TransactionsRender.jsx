@@ -98,7 +98,7 @@ const TransactionsRender = ({ transactionsRender }) => {
       className={
         currPage === "overview"
           ? "overview__trans-continer-list-item"
-          : "transactions-container-list-item"
+          : "transactions-container-list-item animate__animated animate__fadeIn animate__slow "
       }
     >
       <div className="overview__trans-continer-list-item-main">
@@ -141,7 +141,7 @@ const TransactionsRender = ({ transactionsRender }) => {
     <div
       className={
         currPage === "overview"
-          ? "overview__trans animate__animated animate__fadeInUpBig animate__delay-0.12s"
+          ? "overview__trans animate__animated animate__fadeInUpBig animate__delay-0.5s"
           : "trans"
       }
     >

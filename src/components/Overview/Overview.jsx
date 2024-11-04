@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import PropTypes from "prop-types";
 import "./Overview.css";
 
 import data from "../../../data.json";
@@ -51,6 +52,12 @@ const Overview = ({
       </div>
     </div>
   );
+};
+Overview.propTypes = {
+  transactionsRender: PropTypes.array.isRequired,
+  budgetsRender: PropTypes.array.isRequired,
+  potsRender: PropTypes.array.isRequired,
+  billsRender: PropTypes.array.isRequired,
 };
 
 export default Overview;
