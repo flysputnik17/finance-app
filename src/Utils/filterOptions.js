@@ -1,5 +1,3 @@
-import { color } from "chart.js/helpers";
-
 const sortOptions = [
   {
     value: "Latest",

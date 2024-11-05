@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 
 import PopUpWithForm from "../PopUpWithForm";
 import { categoryOptions, theme } from "../../../Utils/filterOptions";
-
 import BudgetContext from "../../../contexts/BudgetContext";
 
-const AddBudgetPopUp = ({ onClose, onSubmit }) => {
+const EditBudgetPopUp = ({ onClose, onSubmit }) => {
   const activeModal = useContext(BudgetContext);
 
   const [MaximumSpend, setMaximumSpend] = useState("");
@@ -85,14 +84,13 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
 
   return (
     <PopUpWithForm
-      titleText="Add New Budget"
+      titleText="Edit Budget"
       activeModal={activeModal}
       onClose={onClose}
       onSubmit={onSubmit}
     >
       <p className="modal__text">
-        Choose a category to set a spending budget. These categories can help
-        you monitor spending.
+        As your budgets change, feel free to update your spending limits.
       </p>
       <label htmlFor="Budget Category" className="modal__label">
         Budget Category
@@ -128,15 +126,15 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
         }
         onClick={onClose}
       >
-        Add Budget
+        Save Changes
       </button>
     </PopUpWithForm>
   );
 };
-AddBudgetPopUp.propTypes = {
+EditBudgetPopUp.propTypes = {
   onClose: PropTypes.func.isRequired,
   activeModal: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default AddBudgetPopUp;
+export default EditBudgetPopUp;

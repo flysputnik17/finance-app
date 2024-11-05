@@ -1,15 +1,18 @@
-import { useEffect, useRef, useContext, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
 import data from "../../../data.json";
 import "./Budgets.css";
 import OverviewBudgets from "../Overview/OverviewBudgets/OverviewBudgets";
 // import mobileScreenContext from "../../contexts/MobileScreenContext";
 import AddBudgetPopUp from "../PopUpWithForm/BudgetsPopUp/AddBudgetPopUp";
-
+import EditBudgetPopUp from "../PopUpWithForm/BudgetsPopUp/EditBudgetPopUp";
 import { budgetsDots, seeDetailsButton } from "../../Utils/constants";
+import BudgetContext from "../../contexts/BudgetContext";
 
 const Budgets = () => {
-  const [activeModal, setActiveModal] = useState("");
+  const [activeModal, setActiveModal] = useState(false);
+  const [modalToOpen, setModalToOpen] = useState("");
+
   const chartRefs = useRef([]);
   // const isMobile = useContext(mobileScreenContext);
 
@@ -142,18 +145,25 @@ const Budgets = () => {
   );
 
   const closeActiveModal = (e) => {
-    setActiveModal("");
+    setActiveModal(false);
     e.preventDefault();
   };
 
   const handleAddBudget = () => {
     console.log("Add budget");
-    setActiveModal("addBudget");
+    setModalToOpen("addBudget");
+    setActiveModal(true);
   };
 
   const handleEditBudget = () => {
     console.log("Edit budget");
-    setActiveModal("editBudget");
+    setModalToOpen("editBudget");
+    setActiveModal(true);
+  };
+  const handleDeleteBudget = () => {
+    console.log("Delete budget");
+    setModalToOpen("deleteBudget");
+    setActiveModal(true);
   };
 
   const EditDropdown = () => {
@@ -179,7 +189,11 @@ const Budgets = () => {
           >
             Edit Budget
           </button>
-          <button className="edit__dropdown-button" type="buttton">
+          <button
+            className="edit__dropdown-button"
+            type="buttton"
+            onClick={handleDeleteBudget}
+          >
             Delete Budget
           </button>
         </div>
@@ -225,7 +239,7 @@ const Budgets = () => {
                     <p className="budgets__info-left-elements-item-header-title">
                       {budget.category}
                     </p>
-                    {EditDropdown()}
+                    <EditDropdown />
                   </div>
                   <div className="budgets__info-left-elements-item-money">
                     <p className="budgets__info-left-elements-item-money-max">
@@ -284,13 +298,28 @@ const Budgets = () => {
           </ul>
         </div>
       </div>
-      {activeModal === "addBudget" && (
-        <AddBudgetPopUp
-          activeModal={activeModal === "addBudget"}
+
+      <BudgetContext.Provider value={activeModal}>
+        {modalToOpen === "addBudget" && (
+          <AddBudgetPopUp
+            onClose={closeActiveModal}
+            onSubmit={() => console.log("Submit")}
+          />
+        )}
+        {modalToOpen === "editBudget" && (
+          <EditBudgetPopUp
+            onClose={closeActiveModal}
+            onSubmit={() => console.log("Submit")}
+          />
+        )}
+        {/* {activeModal === "deleteBudget" && (
+        <DeleteBudgetPopUp
+          activeModal={activeModal === "deleteBudget"}
           onClose={closeActiveModal}
           onSubmit={() => console.log("Submit")}
         />
-      )}
+      )} */}
+      </BudgetContext.Provider>
     </div>
   );
 };

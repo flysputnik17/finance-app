@@ -10,7 +10,7 @@ const PopUpWithForm = ({
   onSubmit,
 }) => {
   return (
-    <div className={`modal ${activeModal && "modal_opened"}`}>
+    <div className={`modal ${activeModal ? "modal_opened" : ""}`}>
       <div className="modal__content">
         <h2 className="modal__title">{titleText}</h2>
         <button
@@ -32,7 +32,7 @@ PopUpWithForm.propTypes = {
   children: PropTypes.node.isRequired,
   titleText: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
-  activeModal: PropTypes.string.isRequired,
+  activeModal: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
