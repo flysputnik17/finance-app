@@ -5,16 +5,22 @@ import "./Budgets.css";
 import OverviewBudgets from "../Overview/OverviewBudgets/OverviewBudgets";
 // import mobileScreenContext from "../../contexts/MobileScreenContext";
 import AddBudgetPopUp from "../PopUpWithForm/BudgetsPopUp/AddBudgetPopUp";
-import EditBudgetPopUp from "../PopUpWithForm/BudgetsPopUp/EditBudgetPopUp";
+
 import { budgetsDots, seeDetailsButton } from "../../Utils/constants";
+
+import BudgetsModalContext from "../../contexts/BudgetsModalContext";
 import BudgetContext from "../../contexts/BudgetContext";
 
 const Budgets = () => {
   const [activeModal, setActiveModal] = useState(false);
-  const [modalToOpen, setModalToOpen] = useState("");
+  const [modalToOpen, setModalToOpen] = useState({
+    modalKeyWord: "",
+    modalTitle: "",
+    modalContent: "",
+    modalButton: "",
+  });
 
   const chartRefs = useRef([]);
-  // const isMobile = useContext(mobileScreenContext);
 
   useEffect(() => {
     data.budgets.forEach((budget, index) => {
@@ -151,14 +157,26 @@ const Budgets = () => {
 
   const handleAddBudget = () => {
     console.log("Add budget");
-    setModalToOpen("addBudget");
     setActiveModal(true);
+    setModalToOpen({
+      modalKeyWord: "addBudget",
+      modalTitle: "Add New Budget",
+      modalContent:
+        "Choose a category to set a spending budget. These categories can help you monitor spending.",
+      modalButton: "Add Budget",
+    });
   };
 
   const handleEditBudget = () => {
     console.log("Edit budget");
-    setModalToOpen("editBudget");
     setActiveModal(true);
+    setModalToOpen({
+      modalKeyWord: "editBudget",
+      modalTitle: "Edit Budget",
+      modalContent:
+        "As your budgets change, feel free to update your spending limits.",
+      modalButton: "Save Changes",
+    });
   };
   const handleDeleteBudget = () => {
     console.log("Delete budget");
@@ -299,27 +317,14 @@ const Budgets = () => {
         </div>
       </div>
 
-      <BudgetContext.Provider value={activeModal}>
-        {modalToOpen === "addBudget" && (
+      <BudgetsModalContext.Provider value={activeModal}>
+        <BudgetContext.Provider value={modalToOpen}>
           <AddBudgetPopUp
             onClose={closeActiveModal}
             onSubmit={() => console.log("Submit")}
           />
-        )}
-        {modalToOpen === "editBudget" && (
-          <EditBudgetPopUp
-            onClose={closeActiveModal}
-            onSubmit={() => console.log("Submit")}
-          />
-        )}
-        {/* {activeModal === "deleteBudget" && (
-        <DeleteBudgetPopUp
-          activeModal={activeModal === "deleteBudget"}
-          onClose={closeActiveModal}
-          onSubmit={() => console.log("Submit")}
-        />
-      )} */}
-      </BudgetContext.Provider>
+        </BudgetContext.Provider>
+      </BudgetsModalContext.Provider>
     </div>
   );
 };

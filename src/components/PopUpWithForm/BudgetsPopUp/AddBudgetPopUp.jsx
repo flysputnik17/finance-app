@@ -4,10 +4,12 @@ import PropTypes from "prop-types";
 import PopUpWithForm from "../PopUpWithForm";
 import { categoryOptions, theme } from "../../../Utils/filterOptions";
 
+import BudgetsModalContext from "../../../contexts/BudgetsModalContext";
 import BudgetContext from "../../../contexts/BudgetContext";
 
 const AddBudgetPopUp = ({ onClose, onSubmit }) => {
-  const activeModal = useContext(BudgetContext);
+  const activeModal = useContext(BudgetsModalContext);
+  const modalInfo = useContext(BudgetContext);
 
   const [MaximumSpend, setMaximumSpend] = useState("");
   const [disabled, setDisabled] = useState(true);
@@ -85,15 +87,12 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
 
   return (
     <PopUpWithForm
-      titleText="Add New Budget"
+      titleText={modalInfo.modalTitle}
       activeModal={activeModal}
       onClose={onClose}
       onSubmit={onSubmit}
     >
-      <p className="modal__text">
-        Choose a category to set a spending budget. These categories can help
-        you monitor spending.
-      </p>
+      <p className="modal__text">{modalInfo.modalContent}</p>
       <label htmlFor="Budget Category" className="modal__label">
         Budget Category
         <select className="modal__select">
