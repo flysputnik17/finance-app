@@ -423,12 +423,7 @@
       "theme": "#626070",
       "spent": 40.0
     },
-    {
-      "category": "Transportation",
-      "maximum": 100.0,
-      "theme": "#826CB0",
-      "spent": 40.0
-    },
+
     {
       "category": "Shopping",
       "maximum": 200.0,
