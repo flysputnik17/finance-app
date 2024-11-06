@@ -90,7 +90,11 @@ function App() {
                   <></>
                 )}
                 {currentRoute === "transactions" ? <Transactions /> : <></>}
-                {currentRoute === "budgets" ? <Budgets /> : <></>}
+                {currentRoute === "budgets" ? (
+                  <Budgets transactionsRender={transactionsRender} />
+                ) : (
+                  <></>
+                )}
                 {currentRoute === "pots" ? <Pots /> : <></>}
                 {currentRoute === "bills" ? <Bills /> : <></>}
               </div>

@@ -11,12 +11,13 @@ import { budgetsDots, seeDetailsButton } from "../../Utils/constants";
 import BudgetsModalContext from "../../contexts/BudgetsModalContext";
 import BudgetContext from "../../contexts/BudgetContext";
 
-const Budgets = () => {
+const Budgets = ({ transactionsRender }) => {
   const [activeModal, setActiveModal] = useState(false);
   const [modalToOpen, setModalToOpen] = useState({
     modalKeyWord: "",
     modalTitle: "",
     modalContent: "",
+    modalMax: "",
     modalButton: "",
   });
 
@@ -150,9 +151,8 @@ const Budgets = () => {
     </li>
   );
 
-  const closeActiveModal = (e) => {
+  const closeActiveModal = () => {
     setActiveModal(false);
-    e.preventDefault();
   };
 
   const handleAddBudget = () => {
@@ -163,28 +163,36 @@ const Budgets = () => {
       modalTitle: "Add New Budget",
       modalContent:
         "Choose a category to set a spending budget. These categories can help you monitor spending.",
+      modalMax: "",
       modalButton: "Add Budget",
     });
   };
 
-  const handleEditBudget = () => {
+  const handleEditBudget = (category) => {
     console.log("Edit budget");
     setActiveModal(true);
     setModalToOpen({
       modalKeyWord: "editBudget",
-      modalTitle: "Edit Budget",
+      modalTitle: `Edit "${category.category}" Budget?`,
       modalContent:
         "As your budgets change, feel free to update your spending limits.",
+      modalMax: `$ ${category.maximum}`,
       modalButton: "Save Changes",
     });
   };
-  const handleDeleteBudget = () => {
+  const handleDeleteBudget = (category) => {
     console.log("Delete budget");
-    setModalToOpen("deleteBudget");
     setActiveModal(true);
+    setModalToOpen({
+      modalKeyWord: "deleteBudget",
+      modalTitle: `Delete "${category.category}" Budget?`,
+      modalContent:
+        "Are you sure you want to delete this budget? This action cannot be reversed, and all the data inside it will be removed forever.",
+      modalButton: "Yes, Confirm Deletion",
+    });
   };
 
-  const EditDropdown = () => {
+  const EditDropdown = (category) => {
     const [menuOpen, setMenuOpen] = useState(false);
     console.log("Edit dropdown");
     return (
@@ -203,20 +211,25 @@ const Budgets = () => {
           <button
             className="edit__dropdown-button"
             type="buttton"
-            onClick={handleEditBudget}
+            onClick={() => handleEditBudget(category)}
           >
             Edit Budget
           </button>
           <button
             className="edit__dropdown-button"
             type="buttton"
-            onClick={handleDeleteBudget}
+            onClick={() => handleDeleteBudget(category)}
           >
             Delete Budget
           </button>
         </div>
       </div>
     );
+  };
+
+  const AddNewBudget = (newBudget) => {
+    console.log("Add new budget");
+    data.budgets.push(newBudget);
   };
 
   return (
@@ -257,7 +270,10 @@ const Budgets = () => {
                     <p className="budgets__info-left-elements-item-header-title">
                       {budget.category}
                     </p>
-                    <EditDropdown />
+                    <EditDropdown
+                      category={budget.category}
+                      maximum={budget.maximum.toFixed(2)}
+                    />
                   </div>
                   <div className="budgets__info-left-elements-item-money">
                     <p className="budgets__info-left-elements-item-money-max">
@@ -295,7 +311,10 @@ const Budgets = () => {
                         <h2 className="budgets__info-left-elements-item-spending-div-title">
                           Latest Spending
                         </h2>
-                        <button className="budgets__info-left-elements-item-spending-div-button">
+                        <button
+                          className="budgets__info-left-elements-item-spending-div-button"
+                          onClick={transactionsRender}
+                        >
                           See All
                           <img
                             src={seeDetailsButton}
@@ -321,7 +340,7 @@ const Budgets = () => {
         <BudgetContext.Provider value={modalToOpen}>
           <AddBudgetPopUp
             onClose={closeActiveModal}
-            onSubmit={() => console.log("Submit")}
+            AddNewBudget={AddNewBudget}
           />
         </BudgetContext.Provider>
       </BudgetsModalContext.Provider>

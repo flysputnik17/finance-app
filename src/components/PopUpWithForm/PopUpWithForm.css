@@ -132,94 +132,56 @@
   border-color: white;
   cursor: pointer;
 }
-
-.Login__button {
-  color: #ffffff;
-  width: 73px;
-  height: 36px;
-  background-color: #0000004d;
-  border: none;
-  margin-top: 15px;
-}
-
-.Login__button:hover {
-  background-color: black;
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.Or-Sign-Up__button {
-  font-family: "inter", Arial, Helvetica, sans-serif;
-  padding: 0;
-  border: none;
-  color: #2f71e5;
-  cursor: pointer;
-  font-weight: 400;
+.modal__button-delete {
+  width: 100%;
+  height: 53px;
+  background-color: rgb(201, 71, 54);
+  opacity: 0.5;
+  color: white;
+  font-family: "Text Preset4 bold", Arial, Helvetica, sans-serif;
+  font-weight: bold;
   font-size: 14px;
-  line-height: 16px;
-  background-color: transparent;
-  margin-bottom: 28px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  border-radius: 10px;
+  opacity: 0.5;
 }
-
-.SignUp__button {
-  font-family: "roboto", "inter", Arial, Helvetica, sans-serif;
-  width: 360px;
-  height: 64px;
-  margin: 6px auto 16px auto;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  padding: 0;
-  border: 1px outset;
-  border-radius: 30px;
-  background-color: #2f71e5;
-  color: #ffffff;
+.modal__button-delete:hover {
   cursor: pointer;
+  opacity: 1;
 }
-.SignUp__button-disabled {
-  font-family: "roboto", "inter", Arial, Helvetica, sans-serif;
-  width: 360px;
-  height: 64px;
-  margin: 6px auto 16px auto;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  padding: 0;
-  border: 1px outset;
-  border-radius: 30px;
-  background-color: #e6e8eb;
-  color: #b6bcbf;
-}
-
-.Or-Login__button {
-  font-family: "inter", Arial, Helvetica, sans-serif;
-  padding: 0;
+.modal__button-delete-back {
   border: none;
-  color: #2f71e5;
-  cursor: pointer;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
   background-color: transparent;
-  margin-bottom: 28px;
+  cursor: pointer;
+  font-family: "Text Preset4", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  margin-top: 20px;
+  padding: 0;
 }
 
-@media (max-width: 490px) and (min-width: 320px) {
+@media (max-width: 465px) {
   .modal__content {
     max-width: 320px;
-    height: 100%;
     padding: 16px 16px 36px 16px;
   }
   .modal__form {
     flex-wrap: nowrap;
   }
+  .modal__title {
+    width: 156px;
+    height: 24px;
+    font-family: "Text Preset2", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0px;
+  }
   .modal__input {
     max-width: 288px;
-  }
-  .SignUp__button,
-  .SignUp__button-disabled {
-    max-width: 288px;
-    margin: 23px 16px 16px 16px;
   }
 }
 
@@ -278,6 +240,7 @@
   line-height: 150%;
   letter-spacing: 0px;
   border-radius: 10px;
+  padding: 0;
 }
 .modal__button:hover {
   background-color: rgb(105, 104, 104);

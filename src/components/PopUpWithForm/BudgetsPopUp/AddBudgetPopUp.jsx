@@ -14,11 +14,12 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
   const [MaximumSpend, setMaximumSpend] = useState("");
   const [disabled, setDisabled] = useState(true);
   const handleMaximumSpendChange = (e) => {
+    setMaximumSpend("");
     const value = e.target.value;
     setMaximumSpend(value);
   };
   useEffect(() => {
-    if (MaximumSpend.length <= 0) {
+    if (MaximumSpend.length <= 0 && modalInfo.modalKeyWord !== "deleteBudget") {
       document.getElementById("addBudgetButton").disabled = true;
       setDisabled(true);
     } else {
@@ -26,6 +27,17 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
       setDisabled(false);
     }
   });
+
+  useEffect(() => {
+    if (modalInfo.modalKeyWord === "editBudget") {
+      setMaximumSpend(modalInfo.modalMax || "");
+    }
+  }, [modalInfo.modalKeyWord, modalInfo.modalMax]);
+
+  useEffect(() => {
+    if (!activeModal) setMaximumSpend("");
+  }, [activeModal]);
+
   const renderSelectOptions = (options) =>
     options.map((option) => (
       <option
@@ -85,50 +97,70 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
     );
   }
 
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    onClose();
+  };
+
   return (
     <PopUpWithForm
       titleText={modalInfo.modalTitle}
       activeModal={activeModal}
       onClose={onClose}
-      onSubmit={onSubmit}
+      onSubmit={handelSubmit}
     >
       <p className="modal__text">{modalInfo.modalContent}</p>
-      <label htmlFor="Budget Category" className="modal__label">
-        Budget Category
-        <select className="modal__select">
-          {renderSelectOptions(categoryOptions)}
-        </select>
-      </label>
-      <label htmlFor="Maximum Spend" className="modal__label">
-        Maximum Spend
-        <input
-          className="modal__input"
-          id="MaximumSpend"
-          name="Maximum Spend"
-          type="text"
-          placeholder="$ e.g. 2000"
-          value={MaximumSpend}
-          onChange={handleMaximumSpendChange}
-        />
-      </label>
-      <label htmlFor="Theme" className="modal__label">
-        Theme
-        <CustomSelect />
-      </label>
+      {modalInfo.modalKeyWord === "deleteBudget" ? null : (
+        <>
+          <label htmlFor="Budget Category" className="modal__label">
+            Budget Category
+            <select className="modal__select">
+              {renderSelectOptions(categoryOptions)}
+            </select>
+          </label>
+          <label htmlFor="Maximum Spend" className="modal__label">
+            Maximum Spend
+            <input
+              className="modal__input"
+              id="MaximumSpend"
+              name="Maximum Spend"
+              type="text"
+              placeholder="$ e.g. 2000"
+              value={MaximumSpend}
+              onChange={handleMaximumSpendChange}
+            />
+          </label>
+          <label htmlFor="Theme" className="modal__label">
+            Theme
+            <CustomSelect />
+          </label>
+        </>
+      )}
 
       <button
         type="submit"
         disabled
         id="addBudgetButton"
         className={
-          disabled
+          modalInfo.modalKeyWord === "deleteBudget"
+            ? "modal__button-delete"
+            : disabled
             ? "modal__button-dis animate__animated animate__headShake animate__delay-0.9s"
             : "modal__button"
         }
         onClick={onClose}
       >
-        Add Budget
+        {modalInfo.modalButton}
       </button>
+      {modalInfo.modalKeyWord === "deleteBudget" ? (
+        <button
+          type="button"
+          className="modal__button-delete-back"
+          onClick={onClose}
+        >
+          No, Go Back
+        </button>
+      ) : null}
     </PopUpWithForm>
   );
 };
