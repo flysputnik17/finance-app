@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./Pots.css";
 import Chart from "chart.js/auto";
 import data from "../../../data.json";
-// import { budgetsDots } from "../../Utils/constants";
+import { budgetsDots } from "../../Utils/constants";
 const Pots = () => {
   const chartRefs = useRef([]);
 
@@ -33,9 +33,9 @@ const Pots = () => {
             animation: true,
             indexAxis: "y",
             borderWidth: 0,
-
+            borderHeight: 0,
             maxBarThickness: 8,
-            borderRadius: 10,
+            borderRadius: 0,
             responsive: true,
             maintainAspectRatio: false, // Ensure the chart takes all available space
             scales: {
@@ -61,9 +61,11 @@ const Pots = () => {
             plugins: {
               legend: {
                 display: false,
+
+                padding: 0,
               },
               tooltip: {
-                enabled: false,
+                enabled: true,
               },
             },
             backgroundColor: "transparent", // Set the background color to transparent
@@ -83,40 +85,40 @@ const Pots = () => {
       });
     };
   }, []);
-  // const EditDropdown = (category) => {
-  //   const [menuOpen, setMenuOpen] = useState(false);
-  //   console.log("Edit dropdown");
-  //   return (
-  //     <div className="edit__dropdown">
-  //       <button
-  //         className="edit__dropdown-header-button"
-  //         type="button"
-  //         onClick={() => setMenuOpen(!menuOpen)}
-  //         style={{ backgroundImage: `url(${budgetsDots})` }}
-  //       ></button>
-  //       <div
-  //         className={
-  //           menuOpen ? "edit__dropdown-menu" : "edit__dropdown-menu-close"
-  //         }
-  //       >
-  //         <button
-  //           className="edit__dropdown-button"
-  //           type="buttton"
-  //           // onClick={() => handleEditBudget(category)}
-  //         >
-  //           Edit Budget
-  //         </button>
-  //         <button
-  //           className="edit__dropdown-button"
-  //           type="buttton"
-  //           // onClick={() => handleDeleteBudget(category)}
-  //         >
-  //           Delete Budget
-  //         </button>
-  //       </div>
-  //     </div>
-  //   );
-  // };
+  const EditDropdown = (category) => {
+    const [menuOpen, setMenuOpen] = useState(false);
+    console.log("Edit dropdown");
+    return (
+      <div className="edit__dropdown">
+        <button
+          className="edit__dropdown-header-button"
+          type="button"
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{ backgroundImage: `url(${budgetsDots})` }}
+        ></button>
+        <div
+          className={
+            menuOpen ? "edit__dropdown-menu" : "edit__dropdown-menu-close"
+          }
+        >
+          <button
+            className="edit__dropdown-button"
+            type="buttton"
+            // onClick={() => handleEditBudget(category)}
+          >
+            Edit Pot
+          </button>
+          <button
+            className="edit__dropdown-button"
+            type="buttton"
+            // onClick={() => handleDeleteBudget(category)}
+          >
+            Delete Pot
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="pots">
@@ -131,28 +133,32 @@ const Pots = () => {
           {data.pots.map((pots, index) => {
             return (
               <li key={pots.name} className="pots__info-elements">
-                <div className="budgets__info-left-elements-item-header">
+                <div className="pots__info-list-item-header">
                   <div
-                    className="budgets__info-left-elements-item-header-dot"
+                    className="pots__info-list-item-header-dot"
                     style={{ backgroundColor: pots.theme }}
                   ></div>
-                  <p className="budgets__info-left-elements-item-header-title">
+                  <p className="pots__info-list-item-header-title">
                     {pots.name}
                   </p>
 
-                  {/* <EditDropdown
-                    category={budget.category}
-                    maximum={budget.maximum.toFixed(2)}
-                  /> */}
+                  <EditDropdown
+                    category={pots.category}
+                    maximum={pots.target.toFixed(2)}
+                  />
                 </div>
-                <div className="budgets__info-left-elements-item-money">
-                  <p className="budgets__info-left-elements-item-money-max">
-                    Total Saved{pots.total.toFixed(2)}
-                  </p>
+                <div className="pots__info-list-item-money">
+                  <div className="pots__info-list-item-money-div">
+                    <p className="pots__info-list-item-money-saved">
+                      Total Saved
+                    </p>
+                    <p className="pots__info-list-item-money-saved-num">
+                      ${pots.total.toFixed(2)}
+                    </p>
+                  </div>
                   <canvas
                     id={`myBar-${index}`}
                     className="budgets__info-left-elements-item-money-canvas"
-                    style={{ height: "8px" }}
                   ></canvas>
                   <div className="budgets__info-left-elements-item-div">
                     <div className="budgets__budgets-main-info-list-item-info">
