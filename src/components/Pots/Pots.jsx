@@ -7,19 +7,19 @@ const Pots = () => {
   const chartRefs = useRef([]);
 
   useEffect(() => {
-    data.budgets.forEach((budget, index) => {
+    data.pots.forEach((pots, index) => {
       const chartData = {
-        labels: [budget.category],
+        labels: [pots.name],
         datasets: [
           {
-            data: [budget.spent],
-            backgroundColor: [budget.theme],
+            data: [pots.total],
+            backgroundColor: [pots.theme],
             hoverOffset: 5,
           },
         ],
       };
 
-      const ctx = document.getElementById(`myBar-${index}`);
+      const ctx = document.getElementById(`myBar2-${index}`);
       if (ctx) {
         // Destroy the previous chart instance if it exists
         if (chartRefs.current[index]) {
@@ -33,9 +33,8 @@ const Pots = () => {
             animation: true,
             indexAxis: "y",
             borderWidth: 0,
-            borderHeight: 0,
-            maxBarThickness: 8,
-            borderRadius: 0,
+            maxBarThickness: 100,
+            borderRadius: 10,
             responsive: true,
             maintainAspectRatio: false, // Ensure the chart takes all available space
             scales: {
@@ -44,7 +43,7 @@ const Pots = () => {
                   display: false,
                 },
                 ticks: {
-                  display: false, // Hide the y-axis labels to make the bar take all the height
+                  display: false,
                 },
                 beginAtZero: true,
                 max: data.budgets[index].maximum,
@@ -54,21 +53,19 @@ const Pots = () => {
                   display: false,
                 },
                 ticks: {
-                  display: false, // Hide the y-axis labels to make the bar take all the height
+                  display: false,
                 },
               },
             },
             plugins: {
               legend: {
                 display: false,
-
-                padding: 0,
               },
               tooltip: {
                 enabled: true,
               },
             },
-            backgroundColor: "transparent", // Set the background color to transparent
+            backgroundColor: "transparent",
           },
           data: chartData,
         });
@@ -85,7 +82,7 @@ const Pots = () => {
       });
     };
   }, []);
-  const EditDropdown = (category) => {
+  const EditDropdown = (name) => {
     const [menuOpen, setMenuOpen] = useState(false);
     console.log("Edit dropdown");
     return (
@@ -143,53 +140,40 @@ const Pots = () => {
                   </p>
 
                   <EditDropdown
-                    category={pots.category}
+                    name={pots.name}
                     maximum={pots.target.toFixed(2)}
                   />
                 </div>
                 <div className="pots__info-list-item-money">
                   <div className="pots__info-list-item-money-div">
-                    <p className="pots__info-list-item-money-saved">
-                      Total Saved
-                    </p>
-                    <p className="pots__info-list-item-money-saved-num">
-                      ${pots.total.toFixed(2)}
-                    </p>
-                  </div>
-                  <canvas
-                    id={`myBar-${index}`}
-                    className="budgets__info-left-elements-item-money-canvas"
-                  ></canvas>
-                  <div className="budgets__info-left-elements-item-div">
-                    <div className="budgets__budgets-main-info-list-item-info">
-                      <div
-                        className="budgets__budgets-main-info-list-item-info-color"
-                        style={{ backgroundColor: pots.theme }}
-                      ></div>
-                      <p className="budgets__budgets-main-info-list-item-title">
-                        {pots.name}
+                    <div className="pots__info-list-item-money-text">
+                      <p className="pots__info-list-item-money-saved">
+                        Total Saved
                       </p>
-                      <p className="budgets__budgets-main-info-list-item-num">
+                      <p className="pots__info-list-item-money-saved-num">
                         ${pots.total.toFixed(2)}
                       </p>
                     </div>
-                    <div className="budgets__budgets-main-info-list-item-info">
-                      <div className="budgets__budgets-main-info-list-item-info-color"></div>
-                      <p className="budgets__budgets-main-info-list-item-title">
-                        Remaining
-                      </p>
-                      <p className="budgets__budgets-main-info-list-item-num">
-                        ${(pots.target - pots.total).toFixed(2)}
-                      </p>
+                    <div className="canvas-div">
+                      <canvas
+                        id={`myBar2-${index}`}
+                        className="pots__info-left-elements-item-money-canvas"
+                      ></canvas>
+                      <div className="pots__info-list-item-money-saved-prasentage">
+                        <p className="pots__info-list-item-money-saved-prasentage-pra">
+                          {((pots.total / pots.target) * 100).toFixed(2)}%
+                        </p>
+                        <p className="pots__info-list-item-money-saved-prasentage-total">
+                          Target of ${pots.target.toFixed(2)}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div className="budgets__info-left-elements-item-spending">
-                    <div className="budgets__info-left-elements-item-spending-div">
-                      <h2 className="budgets__info-left-elements-item-spending-div-title">
-                        Total Saved
-                      </h2>
-                    </div>
-                  </div>
+                </div>
+                <div className="pots__buttons">
+                  <button className="pots__buttons-add">+ Add Money</button>
+
+                  <button className="pots__buttons-add">Withdraw</button>
                 </div>
               </li>
             );
