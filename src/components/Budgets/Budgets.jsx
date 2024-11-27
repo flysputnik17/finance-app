@@ -31,7 +31,7 @@ const Budgets = ({ transactionsRender }) => {
           {
             data: [budget.spent],
             backgroundColor: [budget.theme],
-            hoverOffset: 5,
+            hoverOffset: 10,
           },
         ],
       };

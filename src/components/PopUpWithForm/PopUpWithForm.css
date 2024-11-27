@@ -162,7 +162,101 @@
   margin-top: 20px;
   padding: 0;
 }
-
+.pots-modal-div {
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.pots-modal-div-upper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 496px;
+  height: 114px;
+}
+.modal-div-upper__info {
+  margin: 10.5px 0 16px 0;
+  display: flex;
+  flex-direction: row;
+  height: 38px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-div-upper__info-text {
+  font-family: "Text Preset4", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  color: rgb(105, 104, 104);
+  margin: 0;
+}
+.modal-div-upper__info-num {
+  font-family: "Text Preset1", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 120%;
+  letter-spacing: 0px;
+  color: black;
+  margin: 0;
+}
+.modal-div-upper__bar {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+  height: 39px;
+}
+.modal-div-upper__bar-span {
+  width: 100%;
+  height: 8px;
+  margin-bottom: 13px;
+  background-color: royalblue;
+}
+.modal-div-upper__bar-num {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18px;
+  justify-content: space-between;
+}
+.modal-div-upper__bar-num-text {
+  margin: 0;
+  font-family: "Text Preset5 bold", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  color: rgb(201, 71, 54);
+}
+.modal-div-upper__bar-num-text-tar {
+  margin: 0;
+  font-family: "Text Preset5", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  color: rgb(105, 104, 104);
+}
+.pots-modal-div-lower {
+  display: flex;
+  flex-direction: column;
+  width: 496px;
+  height: 67px;
+}
+.pots-modal-div-lower-text {
+  font-family: "Text Preset5 bold", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  color: rgb(105, 104, 104);
+  margin: 0;
+}
 @media (max-width: 465px) {
   .modal__content {
     max-width: 320px;

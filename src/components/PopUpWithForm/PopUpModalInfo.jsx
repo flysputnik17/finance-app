@@ -113,28 +113,68 @@ const PopUpModalInfo = ({ onClose, onSubmit }) => {
       {modalInfo.modalKeyWord === "deleteBudget" ||
       modalInfo.modalKeyWord === "deletePot" ? null : (
         <>
-          <label htmlFor="Budget Category" className="modal__label">
-            Budget Category
-            <select className="modal__select">
-              {renderSelectOptions(categoryOptions)}
-            </select>
-          </label>
-          <label htmlFor="Maximum Spend" className="modal__label">
-            Maximum Spend
-            <input
-              className="modal__input"
-              id="MaximumSpend"
-              name="Maximum Spend"
-              type="text"
-              placeholder="$ e.g. 2000"
-              value={MaximumSpend}
-              onChange={handleMaximumSpendChange}
-            />
-          </label>
-          <label htmlFor="Theme" className="modal__label">
-            Theme
-            <CustomSelect />
-          </label>
+          {modalInfo.modalKeyWord === "addMoney" ||
+          modalInfo.modalKeyWord === "Withdraw" ? (
+            <>
+              <div className="pots-modal-div">
+                <div className="pots-modal-div-upper">
+                  <div className="modal-div-upper__info">
+                    <p className="modal-div-upper__info-text">New Amount</p>
+                    <p className="modal-div-upper__info-num">$139.00</p>
+                  </div>
+                  <div className="modal-div-upper__bar">
+                    <span className="modal-div-upper__bar-span"></span>
+                    <div className="modal-div-upper__bar-num">
+                      <p className="modal-div-upper__bar-num-text">5.95%</p>
+                      <p className="modal-div-upper__bar-num-text-tar">
+                        Target of $2,500.00
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="pots-modal-div-lower">
+                  <p className="pots-modal-div-lower-text">
+                    Amount to Withdraw
+                  </p>
+                  <label htmlFor="Maximum Spend" className="modal__label">
+                    <input
+                      className="modal__input"
+                      id="Withdraw"
+                      name="Amount to Withdraw"
+                      type="number"
+                      value={MaximumSpend}
+                      onChange={handleMaximumSpendChange}
+                    />
+                  </label>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <label htmlFor="Budget Category" className="modal__label">
+                Budget Category
+                <select className="modal__select">
+                  {renderSelectOptions(categoryOptions)}
+                </select>
+              </label>
+              <label htmlFor="Maximum Spend" className="modal__label">
+                Maximum Spend
+                <input
+                  className="modal__input"
+                  id="MaximumSpend"
+                  name="Maximum Spend"
+                  type="number"
+                  placeholder="$ e.g. 2000"
+                  value={MaximumSpend}
+                  onChange={handleMaximumSpendChange}
+                />
+              </label>
+              <label htmlFor="Theme" className="modal__label">
+                Theme
+                <CustomSelect />
+              </label>
+            </>
+          )}
         </>
       )}
 
