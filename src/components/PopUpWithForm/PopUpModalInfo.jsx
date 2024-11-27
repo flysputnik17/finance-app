@@ -151,14 +151,36 @@ const PopUpModalInfo = ({ onClose, onSubmit }) => {
             </>
           ) : (
             <>
-              <label htmlFor="Budget Category" className="modal__label">
-                Budget Category
-                <select className="modal__select">
-                  {renderSelectOptions(categoryOptions)}
-                </select>
-              </label>
+              {modalInfo.modalKeyWord === "addPots" ? (
+                <>
+                  <label htmlFor="Budget Category" className="modal__label">
+                    Pot Name
+                    <input
+                      className="modal__input"
+                      id="PotName"
+                      name="Pot Name"
+                      type="text"
+                      maxLength={30}
+                      minLength={1}
+                      placeholder="e.g. Holiday"
+                      required
+                    ></input>
+                  </label>
+                </>
+              ) : (
+                <>
+                  <label htmlFor="Budget Category" className="modal__label">
+                    Budget Category
+                    <select className="modal__select">
+                      {renderSelectOptions(categoryOptions)}
+                    </select>
+                  </label>
+                </>
+              )}
               <label htmlFor="Maximum Spend" className="modal__label">
-                Maximum Spend
+                {modalInfo.modalKeyWord === "addPots"
+                  ? "Target"
+                  : "Maximum Spend"}
                 <input
                   className="modal__input"
                   id="MaximumSpend"
