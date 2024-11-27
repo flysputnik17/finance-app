@@ -4,7 +4,7 @@ import data from "../../../data.json";
 import "./Budgets.css";
 import OverviewBudgets from "../Overview/OverviewBudgets/OverviewBudgets";
 // import mobileScreenContext from "../../contexts/MobileScreenContext";
-import AddBudgetPopUp from "../PopUpWithForm/BudgetsPopUp/AddBudgetPopUp";
+import PopUpModalInfo from "../PopUpWithForm/PopUpModalInfo";
 
 import { budgetsDots, seeDetailsButton } from "../../Utils/constants";
 
@@ -156,7 +156,6 @@ const Budgets = ({ transactionsRender }) => {
   };
 
   const handleAddBudget = () => {
-    console.log("Add budget");
     setActiveModal(true);
     setModalToOpen({
       modalKeyWord: "addBudget",
@@ -169,7 +168,6 @@ const Budgets = ({ transactionsRender }) => {
   };
 
   const handleEditBudget = (category) => {
-    console.log("Edit budget");
     setActiveModal(true);
     setModalToOpen({
       modalKeyWord: "editBudget",
@@ -194,7 +192,7 @@ const Budgets = ({ transactionsRender }) => {
 
   const EditDropdown = (category) => {
     const [menuOpen, setMenuOpen] = useState(false);
-    console.log("Edit dropdown");
+
     return (
       <div className="edit__dropdown">
         <button
@@ -228,7 +226,6 @@ const Budgets = ({ transactionsRender }) => {
   };
 
   const AddNewBudget = (newBudget) => {
-    console.log("Add new budget");
     data.budgets.push(newBudget);
   };
 
@@ -338,7 +335,7 @@ const Budgets = ({ transactionsRender }) => {
 
       <BudgetsModalContext.Provider value={activeModal}>
         <BudgetContext.Provider value={modalToOpen}>
-          <AddBudgetPopUp
+          <PopUpModalInfo
             onClose={closeActiveModal}
             AddNewBudget={AddNewBudget}
           />

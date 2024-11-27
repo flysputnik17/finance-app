@@ -3,7 +3,19 @@ import "./Pots.css";
 import Chart from "chart.js/auto";
 import data from "../../../data.json";
 import { budgetsDots } from "../../Utils/constants";
+
+import BudgetsModalContext from "../../contexts/BudgetsModalContext";
+import PopUpModalInfo from "../PopUpWithForm/PopUpModalInfo";
+import BudgetContext from "../../contexts/BudgetContext";
 const Pots = () => {
+  const [activeModal, setActiveModal] = useState(false);
+  const [modalToOpen, setModalToOpen] = useState({
+    modalKeyWord: "",
+    modalTitle: "",
+    modalContent: "",
+    modalMax: "",
+    modalButton: "",
+  });
   const chartRefs = useRef([]);
 
   useEffect(() => {
@@ -82,9 +94,32 @@ const Pots = () => {
       });
     };
   }, []);
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleExit = (evt) => {
+      if (evt.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    const handleOverlay = (evt) => {
+      if (evt.target.classList.contains("modal_opened")) {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleExit);
+    document.addEventListener("mousedown", handleOverlay);
+
+    return () => {
+      document.removeEventListener("keydown", handleExit);
+      document.removeEventListener("mousedown", handleOverlay);
+    };
+  }, [activeModal]);
   const EditDropdown = (name) => {
     const [menuOpen, setMenuOpen] = useState(false);
-    console.log("Edit dropdown");
+
     return (
       <div className="edit__dropdown">
         <button
@@ -101,14 +136,14 @@ const Pots = () => {
           <button
             className="edit__dropdown-button"
             type="buttton"
-            // onClick={() => handleEditBudget(category)}
+            onClick={() => handleEditPot(name)}
           >
             Edit Pot
           </button>
           <button
             className="edit__dropdown-button"
             type="buttton"
-            // onClick={() => handleDeleteBudget(category)}
+            onClick={() => handleDeletePot(name)}
           >
             Delete Pot
           </button>
@@ -117,11 +152,79 @@ const Pots = () => {
     );
   };
 
+  const handleAddPots = () => {
+    setActiveModal(true);
+    setModalToOpen({
+      modalKeyWord: "addPots",
+      modalTitle: "Add New Pot",
+      modalContent:
+        "Create a pot to set savings targets. These can help keep you on track as you save for special purchases.",
+      modalMax: "",
+      modalButton: "Add Pot",
+    });
+  };
+  const handleEditPot = (name) => {
+    setActiveModal(true);
+    setModalToOpen({
+      modalKeyWord: "editPot",
+      modalTitle: `Edit "${name.name}" Pot?`,
+      modalContent:
+        "If your saving targets change, feel free to update your pots.",
+      modalMax: `$ ${name.target}`,
+      modalButton: "Save Changes",
+    });
+  };
+
+  const handleDeletePot = (name) => {
+    setActiveModal(true);
+    setModalToOpen({
+      modalKeyWord: "deletePot",
+      modalTitle: `Delete "${name.name}" Pot?`,
+      modalContent:
+        "Are you sure you want to delete this pot? This action cannot be reversed, and all the data inside it will be removed forever.",
+      modalButton: "Yes, Confirm Deletion",
+    });
+  };
+
+  const handleWithdraw = (name) => {
+    setActiveModal(true);
+    setModalToOpen({
+      modalKeyWord: "Withdraw",
+      modalTitle: `Withdraw from "${name.name}"?`,
+      modalContent:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus  hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet.",
+      modalButton: "Confirm Withdrawal",
+    });
+  };
+
+  const handleAddMoney = (name) => {
+    setActiveModal(true);
+    setModalToOpen({
+      modalKeyWord: "addMoney",
+      modalTitle: `Add to "${name.name}"?`,
+      modalContent:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus  hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet.",
+      modalButton: "Confirm Addition",
+    });
+  };
+
+  const closeActiveModal = () => {
+    setActiveModal(false);
+  };
+
+  const AddNewPot = (newPot) => {
+    data.pots.push(newPot);
+  };
+
   return (
     <div className="pots">
       <div className="pots__header">
         <h2 className="pots__header-title">Pots</h2>
-        <button className="pots__header-button" type="button">
+        <button
+          className="pots__header-button"
+          type="button"
+          onClick={handleAddPots}
+        >
           + Add New Pot
         </button>
       </div>
@@ -171,15 +274,32 @@ const Pots = () => {
                   </div>
                 </div>
                 <div className="pots__buttons">
-                  <button className="pots__buttons-add">+ Add Money</button>
+                  <button
+                    className="pots__buttons-add"
+                    type="button"
+                    onClick={() => handleAddMoney(pots)}
+                  >
+                    + Add Money
+                  </button>
 
-                  <button className="pots__buttons-add">Withdraw</button>
+                  <button
+                    className="pots__buttons-add"
+                    type="button"
+                    onClick={() => handleWithdraw(pots)}
+                  >
+                    Withdraw
+                  </button>
                 </div>
               </li>
             );
           })}
         </ul>
       </div>
+      <BudgetsModalContext.Provider value={activeModal}>
+        <BudgetContext.Provider value={modalToOpen}>
+          <PopUpModalInfo onClose={closeActiveModal} AddNewPot={AddNewPot} />
+        </BudgetContext.Provider>
+      </BudgetsModalContext.Provider>
     </div>
   );
 };

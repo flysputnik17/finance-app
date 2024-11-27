@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
-import PopUpWithForm from "../PopUpWithForm";
-import { categoryOptions, theme } from "../../../Utils/filterOptions";
+import PopUpWithForm from "./PopUpWithForm";
+import { categoryOptions, theme } from "../../Utils/filterOptions";
 
-import BudgetsModalContext from "../../../contexts/BudgetsModalContext";
-import BudgetContext from "../../../contexts/BudgetContext";
+import BudgetsModalContext from "../../contexts/BudgetsModalContext";
+import BudgetContext from "../../contexts/BudgetContext";
 
-const AddBudgetPopUp = ({ onClose, onSubmit }) => {
+const PopUpModalInfo = ({ onClose, onSubmit }) => {
   const activeModal = useContext(BudgetsModalContext);
   const modalInfo = useContext(BudgetContext);
 
@@ -110,7 +110,8 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
       onSubmit={handelSubmit}
     >
       <p className="modal__text">{modalInfo.modalContent}</p>
-      {modalInfo.modalKeyWord === "deleteBudget" ? null : (
+      {modalInfo.modalKeyWord === "deleteBudget" ||
+      modalInfo.modalKeyWord === "deletePot" ? null : (
         <>
           <label htmlFor="Budget Category" className="modal__label">
             Budget Category
@@ -142,7 +143,8 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
         disabled
         id="addBudgetButton"
         className={
-          modalInfo.modalKeyWord === "deleteBudget"
+          modalInfo.modalKeyWord === "deleteBudget" ||
+          modalInfo.modalKeyWord === "deletePot"
             ? "modal__button-delete"
             : disabled
             ? "modal__button-dis animate__animated animate__headShake animate__delay-0.9s"
@@ -152,7 +154,8 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
       >
         {modalInfo.modalButton}
       </button>
-      {modalInfo.modalKeyWord === "deleteBudget" ? (
+      {modalInfo.modalKeyWord === "deleteBudget" ||
+      modalInfo.modalKeyWord === "deletePot" ? (
         <button
           type="button"
           className="modal__button-delete-back"
@@ -164,10 +167,10 @@ const AddBudgetPopUp = ({ onClose, onSubmit }) => {
     </PopUpWithForm>
   );
 };
-AddBudgetPopUp.propTypes = {
+PopUpModalInfo.propTypes = {
   onClose: PropTypes.func.isRequired,
   activeModal: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default AddBudgetPopUp;
+export default PopUpModalInfo;
