@@ -13,8 +13,9 @@ const Pots = () => {
     modalKeyWord: "",
     modalTitle: "",
     modalContent: "",
-    modalMax: "",
+    modalMax: 0,
     modalButton: "",
+    modalTarget: "",
   });
   const chartRefs = useRef([]);
 
@@ -58,7 +59,7 @@ const Pots = () => {
                   display: false,
                 },
                 beginAtZero: true,
-                max: data.budgets[index].maximum,
+                max: data.pots[index].target,
               },
               y: {
                 grid: {
@@ -160,6 +161,7 @@ const Pots = () => {
       modalContent:
         "Create a pot to set savings targets. These can help keep you on track as you save for special purchases.",
       modalMax: "",
+      modalTarget: "",
       modalButton: "Add Pot",
     });
   };
@@ -194,6 +196,8 @@ const Pots = () => {
       modalContent:
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus  hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet.",
       modalButton: "Confirm Withdrawal",
+      modalMax: name.total,
+      modalTarget: name.target,
     });
   };
 
@@ -205,6 +209,8 @@ const Pots = () => {
       modalContent:
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus  hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet.",
       modalButton: "Confirm Addition",
+      modalMax: name.total,
+      modalTarget: name.target,
     });
   };
 

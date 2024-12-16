@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
+import data from "../../../data.json";
+
 import PopUpWithForm from "./PopUpWithForm";
 import { categoryOptions, theme } from "../../Utils/filterOptions";
 
@@ -13,11 +15,20 @@ const PopUpModalInfo = ({ onClose, onSubmit }) => {
 
   const [MaximumSpend, setMaximumSpend] = useState("");
   const [disabled, setDisabled] = useState(true);
+
+  const [potsAmount, setPotsAmount] = useState(modalInfo.modalMax);
+
   const handleMaximumSpendChange = (e) => {
     setMaximumSpend("");
     const value = e.target.value;
     setMaximumSpend(value);
   };
+
+  const handlePotsChange = (e) => {
+    const value = e.target.value;
+    setPotsAmount(value);
+  };
+
   useEffect(() => {
     if (MaximumSpend.length <= 0 && modalInfo.modalKeyWord !== "deleteBudget") {
       document.getElementById("addBudgetButton").disabled = true;
@@ -120,14 +131,22 @@ const PopUpModalInfo = ({ onClose, onSubmit }) => {
                 <div className="pots-modal-div-upper">
                   <div className="modal-div-upper__info">
                     <p className="modal-div-upper__info-text">New Amount</p>
-                    <p className="modal-div-upper__info-num">$139.00</p>
+                    <p className="modal-div-upper__info-num">
+                      ${modalInfo.modalMax}
+                    </p>
                   </div>
                   <div className="modal-div-upper__bar">
                     <span className="modal-div-upper__bar-span"></span>
                     <div className="modal-div-upper__bar-num">
-                      <p className="modal-div-upper__bar-num-text">5.95%</p>
+                      <p className="modal-div-upper__bar-num-text">
+                        %
+                        {(
+                          (100 * modalInfo.modalMax) /
+                          modalInfo.modalTarget
+                        ).toFixed(2)}
+                      </p>
                       <p className="modal-div-upper__bar-num-text-tar">
-                        Target of $2,500.00
+                        ${modalInfo.modalTarget}
                       </p>
                     </div>
                   </div>
@@ -142,8 +161,8 @@ const PopUpModalInfo = ({ onClose, onSubmit }) => {
                       id="Withdraw"
                       name="Amount to Withdraw"
                       type="number"
-                      value={MaximumSpend}
-                      onChange={handleMaximumSpendChange}
+                      value={potsAmount}
+                      onChange={handlePotsChange}
                     />
                   </label>
                 </div>
