@@ -1,0 +1,78 @@
+.bills__render-list-item{
+    width: 100%;
+    height: 72px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0 20px 0;
+    border-bottom: 1px solid rgb(242, 242, 242);
+}
+.bills__render-list-item-main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 0 16px;
+
+}
+.bills__render-list-item-icon{
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    border-radius: 50%;
+}
+.bills__render-list-item-title{
+    width: 121px;
+    height: 21px;
+    margin: 5.5px 109px 5.5px 16px;
+    font-family: "Text Preset4", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0px;
+    color: rgb(32, 31, 36);
+    white-space: nowrap;
+}
+.bills__render-list-item-date{
+    width: 120px;
+    height: 18px;
+    margin: 7px 0 7px 0;
+    font-family: "Text Preset4", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0px;
+    color: rgb(32, 31, 36);
+    white-space: nowrap;
+}   
+.bills__render-list-item-date-mark{
+    width: 16px;
+    height: 16px;
+    margin: 1px 0 1px 8px;
+}
+.bills__render-list-item-amount{
+    width: 100px;
+    height: 21px;
+    margin: 5px 16px 5px 32px;
+    font-family: "Text Preset4", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0px;
+    color: rgb(32, 31, 36);
+        display: flex;
+    flex-direction: row;
+    justify-content: center;
+}   
+.bills__render{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0 32px 32px 32px;
+}
+.bills__render-list{
+    padding: 0;
+    margin: 0;
+}

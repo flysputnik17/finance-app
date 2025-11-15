@@ -462,5 +462,63 @@
       "total": 531.0,
       "theme": "#826CB0"
     }
+  ],
+  "Bills":[
+    {
+      "avatar": "/src/assets/avatars/spark-electric-solutions.jpg",
+      "name":"Spark Electric Solutions",
+      "date":"Monthly - 2nd",
+      "icon":"/src/assets/icon-bill-paid.svg",
+      "amount":100.00
+    },
+    {
+      "avatar": "/src/assets/avatars/serenity-spa-and-wellness.jpg",
+      "name":"Serenity Spa & Wellness",
+      "date":"Monthly - 3rd",
+      "icon":"/src/assets/icon-bill-paid.svg",
+      "amount":30.00
+    },
+    {
+      "avatar": "/src/assets/avatars/elevate-education.jpg",
+      "name":"Elevate Education",
+      "date":"Monthly - 4th",
+      "icon":"/src/assets/icon-bill-paid.svg",
+      "amount":50.00
+    },
+    {
+      "avatar": "/src/assets/avatars/pixel-playground.jpg",
+      "name":"Pixel Playground",
+      "date":"Monthly - 11th",
+      "icon":"/src/assets/icon-bill-paid.svg",
+      "amount":100.00
+    },
+    {
+      "avatar": "/src/assets/avatars/nimbus-data-storage.jpg",
+      "name":"Nimbus Data Storage",
+      "date":"Monthly - 21st",
+      "icon":"/src/assets/icon-bill-due.svg",
+      "amount":9.99
+    },
+    {
+      "avatar": "/src/assets/avatars/bytewise.jpg",
+      "name":"ByteWise",
+      "date":"Monthly - 23rd",
+      "icon":"/src/assets/icon-bill-due.svg",
+      "amount":49.99
+    },
+    {
+      "avatar": "/src/assets/avatars/ecofuel-energy.jpg",
+      "name":"EcoFuel Energy",
+      "date":"Monthly - 29th",
+      "icon":"/src/assets/icon-bill-due.svg",
+      "amount":35.00
+    },
+    {
+      "avatar": "/src/assets/avatars/aqua-flow-utilities.jpg",
+      "name":"Aqua Flow Utilities",
+      "date":"Monthly - 30th",
+      "icon":"/src/assets/icon-bill-due.svg",
+      "amount":100
+    }
   ]
 }

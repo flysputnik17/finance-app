@@ -38,6 +38,8 @@ const budgetsDots = "/src/assets/dots.svg";
 
 const modalCloseBtn = "/src/assets/modalCloseBTN.svg";
 
+const recurringTotalIcon = "/src/assets/icon-recurring-bills.svg";
+
 export {
   buttonStyleUnclicked,
   buttonStyleClicked,
@@ -65,4 +67,5 @@ export {
   minimizeIconSmall,
   budgetsDots,
   modalCloseBtn,
+  recurringTotalIcon,
 };
