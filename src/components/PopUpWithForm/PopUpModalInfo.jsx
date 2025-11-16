@@ -110,7 +110,7 @@ const PopUpModalInfo = ({ onClose, onSubmit }) => {
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    onClose();
+    onSubmit();
   };
 
   return (

@@ -76,3 +76,9 @@
     padding: 0;
     margin: 0;
 }
+.bills__render-list-item-rest{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}

@@ -59,8 +59,10 @@ const Bills = () => {
             <div className="bills__info__right-side-main-headers">
               <div className="bills__info__right-side-main-headers-item">
                 <p className="bills__info__right-side-main-headers-item-textM">Bill Title</p>
-                <p className="bills__info__right-side-main-headers-item-text">Due Date</p>
-                <p className="bills__info__right-side-main-headers-item-text">Amount</p>
+                <div className="bills__info__right-side-main-headers-item-texts-group">
+                  <p className="bills__info__right-side-main-headers-item-text">Due Date</p>
+                  <p className="bills__info__right-side-main-headers-item-text">Amount</p>
+                </div>
               </div>
             </div>
             <div className="bills__info__right-side-rest animate__animated animate__fadeIn animate__slow">

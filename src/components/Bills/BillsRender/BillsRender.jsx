@@ -12,9 +12,11 @@ const renderBillItems = (bill,index) => (
             <img alt="bill icon" className="bills__render-list-item-icon" src={bill.avatar}/>
         <p className="bills__render-list-item-title">{bill.name}</p>
         </div>
-        <p className="bills__render-list-item-date">{bill.date}</p>
-        <img className="bills__render-list-item-date-mark" alt="icon" src={bill.icon}></img>
-        <p className="bills__render-list-item-amount">${bill.amount}</p>
+        <div className="bills__render-list-item-rest">
+                    <p className="bills__render-list-item-date">{bill.date}</p>
+                   <img className="bills__render-list-item-date-mark" alt="icon" src={bill.icon}></img>
+                    <p className="bills__render-list-item-amount">${bill.amount}</p>
+        </div>
     </li>
 )
 

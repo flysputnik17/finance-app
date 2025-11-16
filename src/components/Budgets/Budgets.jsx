@@ -22,6 +22,8 @@ const Budgets = ({ transactionsRender }) => {
   });
 
   const chartRefs = useRef([]);
+  
+  
 
   useEffect(() => {
     data.budgets.forEach((budget, index) => {
@@ -155,6 +157,10 @@ const Budgets = ({ transactionsRender }) => {
     setActiveModal(false);
   };
 
+  const AddNewBudget = (newBudget) => {
+    data.budgets.push(newBudget);
+  };
+
   const handleAddBudget = () => {
     setActiveModal(true);
     setModalToOpen({
@@ -165,6 +171,7 @@ const Budgets = ({ transactionsRender }) => {
       modalMax: "",
       modalButton: "Add Budget",
     });
+    
   };
 
   const handleEditBudget = (category) => {
@@ -225,10 +232,7 @@ const Budgets = ({ transactionsRender }) => {
     );
   };
 
-  const AddNewBudget = (newBudget) => {
-    data.budgets.push(newBudget);
-  };
-
+  
   return (
     <div className="budgets">
       <div className="budgets__header">
@@ -337,7 +341,7 @@ const Budgets = ({ transactionsRender }) => {
         <BudgetContext.Provider value={modalToOpen}>
           <PopUpModalInfo
             onClose={closeActiveModal}
-            AddNewBudget={AddNewBudget}
+            onSubmit={AddNewBudget}
           />
         </BudgetContext.Provider>
       </BudgetsModalContext.Provider>
